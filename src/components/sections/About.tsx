@@ -5,15 +5,15 @@ import { cleanDraft, siteCopy } from '@/data/site';
 /** Le vrai visage derrière les 25 concepts : bio réelle d'Éloi. */
 export function About() {
   return (
-    <section className="grid gap-10 px-8 py-24 md:grid-cols-[2fr_3fr] md:px-16">
+    <section className="px-8 py-24 md:px-16">
       <MediaSlot
         type="portrait"
         slug="dj-king-e"
         name={profile.djName}
         surface="#0d0d0d"
-        ratio="3/4"
+        ratio="16/9"
       />
-      <div className="self-center">
+      <div className="mt-10 max-w-2xl">
         <p className="text-xs uppercase tracking-caps text-muted">
           {siteCopy.about.label}
         </p>
