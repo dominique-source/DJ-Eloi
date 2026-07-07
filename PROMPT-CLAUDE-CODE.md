@@ -1,8 +1,9 @@
-# PROMPT MAÎTRE — Site « 25 Startups »
+# PROMPT MAÎTRE — Site « DJ King Éloi » (25 startups)
 
 ## MISSION
-Construis un site immersif présentant 25 concepts de startups autour d'un DJ de
-15 ans. Le but n'est pas de vendre un service de DJ : c'est de montrer 25 façons
+Construis un site immersif présentant 25 concepts de startups autour de
+DJ King Éloi, DJ de 15 ans. La marque « DJ King Éloi » s'affiche partout
+(hero, titres, SEO). Le but n'est pas de vendre un service de DJ : c'est de montrer 25 façons
 de réinventer le divertissement par la musique. Chaque concept doit sembler être
 une startup qui existe déjà. Le visiteur doit avoir l'impression de visiter le futur.
 
