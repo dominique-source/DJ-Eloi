@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DJ King Éloi — 25 façons de réinventer le divertissement
 
-## Getting Started
+Site immersif présentant 25 concepts de startups autour de DJ King E (Éloi,
+15 ans). Next.js 15 · TypeScript strict · Tailwind v4 · GSAP + ScrollTrigger ·
+Lenis · motion · React Three Fiber.
 
-First, run the development server:
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # build de production
+npm run lint       # lint
+npx tsc --noEmit   # vérification des types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Comment éditer le contenu
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tout le contenu vit dans deux fichiers — ne jamais éditer les composants
+pour changer un texte :
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **`src/data/startups.ts`** — les 25 concepts (source de vérité unique) :
+  noms, pitchs, palettes, scores, timelines des flagships.
+- **`src/data/profile.ts`** — le vrai profil d'Éloi : bio, tagline, services
+  réservables, contact. Les champs `TODO` sont masqués à l'affichage tant
+  qu'ils ne sont pas remplis.
+- **`src/data/site.ts`** — la copie éditoriale (titres de sections, labels,
+  formulaire).
 
-## Learn More
+## Convention des médias
 
-To learn more about Next.js, take a look at the following resources:
+Déposer les fichiers dans `public/media/{slug}/` :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+public/media/beat-battle-league/
+  logo.svg
+  hero.mp4            (fallback : hero.jpg)
+  gallery-01.jpg … gallery-04.jpg
+  mockup-mobile.png
+  mockup-desktop.png
+  portrait.jpg        (profil uniquement : public/media/dj-king-e/)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tant qu'un fichier n'existe pas, `<MediaSlot />` affiche automatiquement un
+placeholder premium (surface de la startup, bruit subtil, monogramme). Aucun
+autre changement n'est nécessaire : ajouter le fichier suffit.
 
-## Deploy on Vercel
+## Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/                  layout, page d'accueil, /startups/[slug], action contact
+  components/
+    media/MediaSlot.tsx   slot média unique (jamais de <img> direct)
+    sections/             les 10 sections du voyage principal
+    startup/              le template des 25 pages startup (5 variantes)
+    ui/                   primitives (jauges, count-up, boutons magnétiques)
+    effects/              moments WOW globaux
+  hooks/                useLenis, useMagneticCursor, usePrefersReducedMotion
+  data/                 startups.ts · profile.ts · site.ts
+  lib/animations.ts     easing et durées partagés
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Moments cachés
+
+- **Barre espace** : flash de la barre signature.
+- **Code Konami** (↑↑↓↓←→←→BA) : mode « nuit de festival ».
+- **5 clics sur le copyright** du footer : même effet.
+- Toutes les animations respectent `prefers-reduced-motion`.
+
+## Déploiement (Vercel)
+
+1. Importer le dépôt `dominique-source/DJ-Eloi` sur [vercel.com](https://vercel.com).
+2. Framework preset : Next.js — aucune variable d'environnement requise.
+3. Chaque push sur `main` déploie automatiquement.
+
+Le formulaire de contact valide et journalise côté serveur ; brancher un
+fournisseur d'envoi (ex. Resend) dans `src/app/actions/contact.ts` quand
+l'adresse réelle sera renseignée dans `profile.ts`.
