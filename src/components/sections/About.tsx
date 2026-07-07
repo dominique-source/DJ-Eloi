@@ -1,18 +1,12 @@
-import { MediaSlot } from '@/components/media/MediaSlot';
 import { profile } from '@/data/profile';
 import { cleanDraft, siteCopy } from '@/data/site';
+import { ConceptOrbit } from './ConceptOrbit';
 
-/** Le vrai visage derrière les 25 concepts : bio réelle d'Éloi. */
+/** Le vrai visage derrière les concepts : bio réelle d'Éloi, projets en orbite. */
 export function About() {
   return (
     <section className="px-8 py-24 md:px-16">
-      <MediaSlot
-        type="portrait"
-        slug="dj-king-e"
-        name={profile.djName}
-        surface="#0d0d0d"
-        ratio="16/9"
-      />
+      <ConceptOrbit />
       <div className="mt-10 max-w-2xl">
         <p className="text-xs uppercase tracking-caps text-muted">
           {siteCopy.about.label}
