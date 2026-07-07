@@ -79,6 +79,44 @@ export const siteCopy = {
     success: 'Message reçu. On te répond très vite.',
     error: 'Vérifie ton nom, ton courriel et ton message.',
   },
+  academy: {
+    label: 'DJ Academy',
+    title: 'Apprends les bases. Comme dans un jeu.',
+    subtitle:
+      'Trois missions, du vrai son, un rang à gagner. Insère une pièce et prends les commandes.',
+    start: 'Press start',
+    soundOff: 'Couper le son',
+    soundOn: 'Relancer le son',
+    xp: 'XP',
+    rankLabel: 'Rang',
+    ranks: ['Rookie', 'Selector', 'Mixmaster', 'Headliner'],
+    locked: 'Verrouillé',
+    active: 'En cours',
+    done: 'Réussi',
+    missions: [
+      {
+        title: 'Cale le tempo',
+        instruction:
+          'Tape sur le pad en suivant le beat. 8 frappes, le plus proche possible du temps.',
+        action: 'Tape sur le beat',
+      },
+      {
+        title: 'Maîtrise le crossfade',
+        instruction:
+          'Fais glisser la fête du deck A vers le deck B — en douceur, pas d’un coup.',
+        action: 'Deck A → Deck B',
+      },
+      {
+        title: 'Lâche le drop',
+        instruction:
+          'Maintiens pour faire monter la pression, relâche pile sur le 1.',
+        action: 'Maintiens, puis relâche sur le 1',
+      },
+    ],
+    replay: 'Rejouer',
+    finale: 'Académie complétée. Ton rang :',
+    conceptLink: 'Le concept complet — Mixtape Academy',
+  },
   footer: {
     index: 'Index des 25 startups',
     time: 'Heure locale',

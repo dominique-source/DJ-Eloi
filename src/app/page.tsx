@@ -7,6 +7,7 @@ import { FlagshipStory } from '@/components/sections/FlagshipStory';
 import { Roadmap } from '@/components/sections/Roadmap';
 import { Gallery } from '@/components/sections/Gallery';
 import { ConstellationMap } from '@/components/sections/ConstellationMap';
+import { DJAcademy } from '@/components/sections/DJAcademy';
 import { ContactCTA } from '@/components/sections/ContactCTA';
 import { Footer } from '@/components/sections/Footer';
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Roadmap />
       <Gallery />
       <ConstellationMap />
+      <DJAcademy />
       <ContactCTA />
       <Footer />
     </main>

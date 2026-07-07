@@ -61,6 +61,14 @@ src/
   lib/animations.ts     easing et durées partagés
 ```
 
+## DJ Academy (section jeu vidéo)
+
+Mini-jeu jouable sur la page d'accueil : trois missions (caler le tempo,
+maîtriser le crossfade, lâcher le drop sur le 1) avec du son synthétisé en
+Web Audio — aucun fichier audio requis. La progression (XP + rang Rookie →
+Headliner) est sauvegardée en localStorage. Textes éditables dans
+`src/data/site.ts` (`academy`).
+
 ## Moments cachés
 
 - **Barre espace** : flash de la barre signature.

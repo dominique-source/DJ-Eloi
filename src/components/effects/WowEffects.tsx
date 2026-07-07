@@ -33,7 +33,7 @@ export function WowEffects() {
       const target = event.target as HTMLElement | null;
       const typing =
         target !== null &&
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+        ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(target.tagName);
 
       if (event.key === ' ' && !typing) {
         event.preventDefault();
