@@ -7,9 +7,11 @@ import { categoryLabels, startups, type Category } from '@/data/startups';
 import { siteCopy } from '@/data/site';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 
-const categories = Object.keys(categoryLabels) as Category[];
+const categories = (Object.keys(categoryLabels) as Category[]).filter((category) =>
+  startups.some((s) => s.category === category),
+);
 
-/** Grille filtrable des 25 startups — accent visible au survol seulement. */
+/** Grille filtrable des concepts DJ — accent visible au survol seulement. */
 export function StartupGrid() {
   const [filter, setFilter] = useState<Category | 'all'>('all');
   const visible =

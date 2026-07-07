@@ -1,14 +1,16 @@
 /**
  * ============================================================
- * SOURCE DE VÉRITÉ UNIQUE — Les 25 startups
+ * SOURCE DE VÉRITÉ UNIQUE — Les concepts DJ
  * ============================================================
  * Toutes les pages du site sont générées à partir de ce fichier.
  * Pour remplacer un contenu (texte, image, vidéo, logo) :
  * modifier UNIQUEMENT ce fichier. Aucun texte ne doit être
  * codé en dur dans les composants.
  *
- * Convention des médias (placeholders premium) :
- *   /public/media/{slug}/logo.svg
+ * Seuls les concepts avec de vrais médias sont gardés ici (voir
+ * /public/media/{slug}/). Convention des médias (placeholders
+ * premium tant qu'un fichier n'existe pas) :
+ *   /public/media/{slug}/logo.png
  *   /public/media/{slug}/hero.mp4        (fallback: hero.jpg)
  *   /public/media/{slug}/gallery-01.jpg  ... gallery-04.jpg
  *   /public/media/{slug}/mockup-mobile.png
@@ -39,12 +41,12 @@ export interface Startup {
   slug: string;
   name: string;
   tagline: string;            // 5–8 mots, ton keynote
-  pitch: string;               // 2–3 phrases, ton startup lancée
+  pitch: string;               // 2–3 phrases, ton concept DJ
   category: Category;
-  flagship: boolean;          // true = top 5 investisseur (page enrichie)
+  flagship: boolean;          // true = concept phare (page enrichie)
   palette: {
     accent: string;           // LA couleur (une seule, règle 60/30/10)
-    surface: string;          // fond sombre propre à la startup
+    surface: string;          // fond sombre propre au concept
   };
   audience: string;           // pourquoi jeunes + familles adorent
   revenueModel: string;
@@ -63,53 +65,6 @@ export interface Startup {
 export const startups: Startup[] = [
   {
     id: 1,
-    slug: 'fete-a-domicile',
-    name: 'Fête-à-Domicile',
-    tagline: 'La fête parfaite, livrée chez toi.',
-    pitch:
-      "Le service de DJ clé en main pour anniversaires et fêtes familiales, animé par un DJ ado qui sait exactement ce que les jeunes veulent entendre. Matériel, lumières, jeux d'animation : tout arrive, tout fonctionne, tout le monde danse.",
-    category: 'live',
-    flagship: false,
-    palette: { accent: '#FF5A5F', surface: '#12080A' },
-    audience:
-      "Les parents engagent un jeune fiable et abordable; les ados trouvent ça 10x plus cool qu'un DJ adulte.",
-    revenueModel: '200–450 $ / événement, extras éclairage et animation.',
-    startupCost: '800–1 500 $',
-    scores: { difficulty: 2, revenue: 5, viral: 4 },
-    moat: 'Réputation locale et avis clients qui se construisent vite.',
-    firstAction:
-      'Page Instagram + 2 fêtes gratuites contre vidéos et témoignages.',
-    stats: [
-      { value: '450 $', label: 'par événement' },
-      { value: '2 h', label: 'de préparation' },
-      { value: '2/10', label: 'difficulté' },
-    ],
-  },
-  {
-    id: 2,
-    slug: 'danse-ecole',
-    name: 'Danse d’École Clé en Main',
-    tagline: 'Chaque école mérite sa soirée légendaire.',
-    pitch:
-      "Le forfait complet des danses scolaires : DJ, éclairage, animation, photobooth. Un fournisseur qui parle le langage des élèves et rassure les directions — avec un calendrier récurrent d'Halloween à la fin d'année.",
-    category: 'live',
-    flagship: false,
-    palette: { accent: '#7C5CFF', surface: '#0B0914' },
-    audience:
-      'Les directions veulent un fournisseur fiable et approprié; les élèves votent sur le plancher de danse.',
-    revenueModel: '400–800 $ / danse, contrats annuels multi-événements.',
-    startupCost: '~1 500 $ (matériel partagé)',
-    scores: { difficulty: 3, revenue: 6, viral: 5 },
-    moat: 'Les contrats scolaires récurrents créent une exclusivité de fait.',
-    firstAction: 'Proposition d’une page envoyée à 10 écoles.',
-    stats: [
-      { value: '4–6', label: 'danses / école / an' },
-      { value: '800 $', label: 'par soirée' },
-      { value: '3/10', label: 'difficulté' },
-    ],
-  },
-  {
-    id: 3,
     slug: 'dj-tournois',
     name: 'DJ de Tournois Jeunesse',
     tagline: 'Chaque gymnase devient une arène.',
@@ -132,76 +87,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 4,
-    slug: 'silent-party',
-    name: 'Silent Party Mobile',
-    tagline: 'La fête que personne n’entend venir.',
-    pitch:
-      "Des soirées silencieuses avec casques sans fil à 3 canaux : le DJ mixe sur l'un, deux playlists sur les autres. Zéro plainte de bruit, contenu vidéo hilarant garanti, déployable partout — écoles, parcs, bibliothèques.",
-    category: 'live',
-    flagship: false,
-    palette: { accent: '#00E5FF', surface: '#041012' },
-    audience:
-      'Expérience nouvelle, zéro bruit pour les parents, images irrésistibles pour les réseaux.',
-    revenueModel: '15–25 $ / casque / événement + cachet DJ.',
-    startupCost: '~1 800 $ (20 casques)',
-    scores: { difficulty: 4, revenue: 7, viral: 8 },
-    moat: 'L’inventaire de casques verrouille le marché local.',
-    firstAction: 'Prévendre à 3 écoles et 2 villes avant d’acheter.',
-    stats: [
-      { value: '1 250 $', label: 'par soirée (50 casques)' },
-      { value: '3', label: 'canaux simultanés' },
-      { value: '8/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 5,
-    slug: 'sport-x-beats',
-    name: 'Studio Sport × Beats',
-    tagline: 'Le son qui fait gagner des matchs.',
-    pitch:
-      "La chaîne de contenu où le sport rencontre le mix : chansons d'échauffement, remixes de moments sportifs viraux, sons d'entrée d'athlètes. Une audience de jeunes sportifs qui s'entraînent sur ses sons.",
-    category: 'digital',
-    flagship: false,
-    palette: { accent: '#CCFF00', surface: '#0D0D0D' },
-    audience:
-      "Chaque jeune athlète rêve de SA chanson d'entrée; le contenu circule d'équipe en équipe.",
-    revenueModel: 'Publicité, commandites, packs de mixes à 9,99 $.',
-    startupCost: '0–200 $',
-    scores: { difficulty: 2, revenue: 7, viral: 9 },
-    moat: 'L’authenticité athlète + DJ est rare.',
-    firstAction: 'Publier 3 vidéos format 30 s « la chanson qui te fait gagner ».',
-    stats: [
-      { value: '9/10', label: 'viralité' },
-      { value: '0 $', label: 'pour démarrer' },
-      { value: '∞', label: 'de contenu possible' },
-    ],
-  },
-  {
-    id: 6,
-    slug: 'warm-up-pro',
-    name: 'Warm-Up Pro',
-    tagline: 'Chaque équipe mérite son hymne.',
-    pitch:
-      "Le mix d'échauffement officiel de chaque équipe : 20 minutes calibrées sur la routine d'avant-match, mises à jour chaque mois, performées en direct pour les grands rendez-vous. L'identité sonore que les pros ont — pour les équipes jeunesse.",
-    category: 'sport',
-    flagship: false,
-    palette: { accent: '#FF3D71', surface: '#12060B' },
-    audience:
-      "Les équipes cherchent tout avantage mental; un mix personnalisé soude le groupe.",
-    revenueModel: '150 $ / mix, 50 $ / mois / équipe, 250 $ la présence live.',
-    startupCost: '0 $',
-    scores: { difficulty: 3, revenue: 6, viral: 7 },
-    moat: 'Double crédibilité athlète-DJ, incompréhensible pour un DJ ordinaire.',
-    firstAction: 'Mix gratuit pour une équipe connue + filmer la réaction.',
-    stats: [
-      { value: '20 min', label: 'de mix calibré' },
-      { value: '50 $', label: '/ mois / équipe' },
-      { value: '0 $', label: 'd’investissement' },
-    ],
-  },
-  {
-    id: 7,
+    id: 2,
     slug: 'roller-beats',
     name: 'Roller Beats',
     tagline: 'Le vendredi soir sur roues.',
@@ -224,30 +110,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 8,
-    slug: 'study-beats',
-    name: 'Study Beats Live',
-    tagline: 'Étudier n’a jamais sonné aussi bien.',
-    pitch:
-      "Des sessions d'étude collectives sous casques silencieux : lo-fi mixé en direct, technique Pomodoro encodée dans la musique. Le DJ change l'énergie pour signaler sprints et pauses. L'étude, gamifiée par le son.",
-    category: 'community',
-    flagship: false,
-    palette: { accent: '#9D7BFF', surface: '#0A0812' },
-    audience:
-      'Les parents paient pour que leurs ados étudient; les jeunes viennent pour l’ambiance, restent pour la productivité.',
-    revenueModel: '10–15 $ / session, forfaits examens, partenariats bibliothèques.',
-    startupCost: 'Réutilise les casques Silent Party',
-    scores: { difficulty: 4, revenue: 5, viral: 7 },
-    moat: 'La programmation sonore Pomodoro est un vrai savoir-faire.',
-    firstAction: 'Session test gratuite avec 10 amis en période d’examens.',
-    stats: [
-      { value: '25/5', label: 'sprint / pause (min)' },
-      { value: '15 $', label: 'par session' },
-      { value: '7/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 9,
+    id: 3,
     slug: 'podium-sound',
     name: 'Podium Sound',
     tagline: 'Chaque fil d’arrivée devient un moment de gloire.',
@@ -270,30 +133,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 10,
-    slug: 'esport-arena-sound',
-    name: 'Esport Arena Sound',
-    tagline: 'Le son des grandes finales, pour les tournois d’ici.',
-    pitch:
-      "L'ambiance sonore des tournois esport locaux : musique entre les matchs, sound design des moments clés, hype des finales. Le pont entre la culture gaming et l'événementiel — pour des tournois qui ont l'air pros en vidéo.",
-    category: 'game',
-    flagship: false,
-    palette: { accent: '#3D8BFF', surface: '#050A14' },
-    audience:
-      'Les gamers rêvent de l’ambiance des mondiaux; les organisateurs veulent paraître pros.',
-    revenueModel: '250–500 $ / tournoi + stingers sonores personnalisés.',
-    startupCost: '0 $',
-    scores: { difficulty: 3, revenue: 5, viral: 7 },
-    moat: 'Comprendre les codes gaming ET savoir mixer : combinaison rare.',
-    firstAction: 'Set gratuit offert au prochain tournoi local.',
-    stats: [
-      { value: '500 $', label: 'par tournoi' },
-      { value: '0 $', label: 'd’investissement' },
-      { value: '7/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 11,
+    id: 4,
     slug: 'beat-battle-league',
     name: 'Beat Battle League',
     tagline: 'Le premier sport du DJing.',
@@ -322,7 +162,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 12,
+    id: 5,
     slug: 'sonic-rush',
     name: 'Sonic Rush',
     tagline: 'La course où la musique est le jeu.',
@@ -351,30 +191,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 13,
-    slug: 'crowd-control',
-    name: 'Crowd Control',
-    tagline: 'La foule est le jeu. Le DJ est le boss final.',
-    pitch:
-      "Un format d'événement où le public vote en temps réel pour contrôler la musique et doit réussir des défis collectifs pour débloquer les hits. Twitch et Roblox ont prouvé que les jeunes veulent participer — pas consommer.",
-    category: 'game',
-    flagship: false,
-    palette: { accent: '#00FFC2', surface: '#03110D' },
-    audience:
-      'Chaque spectateur devient joueur; aucune soirée ne se ressemble; moments viraux constants.',
-    revenueModel: 'Cachet premium 500–800 $ + licences du format à d’autres DJs.',
-    startupCost: '~300 $',
-    scores: { difficulty: 5, revenue: 8, viral: 9 },
-    moat: 'Le logiciel de vote + le savoir-faire d’animation en direct.',
-    firstAction: 'Prototyper le vote via sondage Instagram live lors d’une fête.',
-    stats: [
-      { value: 'Temps réel', label: 'vote de la foule' },
-      { value: '800 $', label: 'cachet premium' },
-      { value: '9/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 14,
+    id: 6,
     slug: 'beat-fit',
     name: 'Beat Fit',
     tagline: 'L’entraînement où le DJ est le coach.',
@@ -397,53 +214,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 15,
-    slug: 'guess-the-drop',
-    name: 'Guess The Drop',
-    tagline: 'Parents contre ados. Que le meilleur son gagne.',
-    pitch:
-      "Le jeu-spectacle musical live : deviner la chanson en 1 seconde, chanter la suite, battle générationnelle parents vs ados. Le trivia night existe partout — personne ne l'a réinventé pour les familles avec un vrai DJ.",
-    category: 'game',
-    flagship: false,
-    palette: { accent: '#FF2E63', surface: '#12040A' },
-    audience:
-      'Le duel générationnel est magique : les parents gagnent sur les années 80, les ados sur TikTok.',
-    revenueModel: 'Cachet 250–400 $ / soirée + 20 $ / équipe inscrite.',
-    startupCost: '~200 $',
-    scores: { difficulty: 3, revenue: 7, viral: 8 },
-    moat: 'La banque de questions et le talent d’animation.',
-    firstAction: 'Écrire 5 rondes, tester en famille, pitcher un resto familial.',
-    stats: [
-      { value: '1 s', label: 'pour deviner' },
-      { value: '5', label: 'rondes par soirée' },
-      { value: '8/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 16,
-    slug: 'walk-up-songs',
-    name: 'Walk-Up Songs',
-    tagline: 'Ton nom. Ton son. Ton entrée.',
-    pitch:
-      "Des chansons d'entrée personnalisées pour jeunes athlètes : 30 secondes de mix sur mesure avec leur nom en voix off. Au baseball pro, chaque joueur a sa walk-up song — maintenant, chaque jeune aussi.",
-    category: 'digital',
-    flagship: false,
-    palette: { accent: '#4DFFDF', surface: '#031210' },
-    audience:
-      'LE cadeau parfait pour un jeune sportif; entendre son nom dans un vrai mix = frisson garanti.',
-    revenueModel: '30–50 $ / chanson, forfaits équipe, présentations de saison pour ligues.',
-    startupCost: '0 $',
-    scores: { difficulty: 2, revenue: 6, viral: 8 },
-    moat: 'Distribution via le réseau sportif.',
-    firstAction: '3 exemples gratuits pour des athlètes locaux, publiés avec leur réaction.',
-    stats: [
-      { value: '30 s', label: 'de mix sur mesure' },
-      { value: '50 $', label: 'par chanson' },
-      { value: '1 h', label: 'de production' },
-    ],
-  },
-  {
-    id: 17,
+    id: 7,
     slug: 'neon-nights',
     name: 'Neon Nights',
     tagline: 'La boîte de nuit que les ados n’avaient pas le droit d’avoir.',
@@ -472,7 +243,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 18,
+    id: 8,
     slug: 'halftime-heroes',
     name: 'Halftime Heroes',
     tagline: 'La mi-temps devient le moment fort du match.',
@@ -495,7 +266,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 19,
+    id: 9,
     slug: 'mixtape-academy',
     name: 'Mixtape Academy',
     tagline: 'Apprends à mixer avec quelqu’un qui te ressemble.',
@@ -518,36 +289,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 20,
-    slug: 'team-anthem-club',
-    name: 'Team Anthem Club',
-    tagline: 'Le Spotify des équipes.',
-    pitch:
-      "L'abonnement mensuel des équipes sportives : mix d'échauffement exclusif, mix de victoire et playlist de vestiaire, livrés automatiquement chaque mois. Spotify vend l'accès à la musique; nous vendons l'identité sonore d'un groupe.",
-    category: 'community',
-    flagship: true,
-    palette: { accent: '#1DE9B6', surface: '#03110D' },
-    audience:
-      'Les équipes veulent leur son signature sans y penser; le coach reçoit tout clé en main.',
-    revenueModel: '29–49 $ / mois / équipe. 1 000 équipes = ~470 K$ / an récurrents.',
-    startupCost: '0 $',
-    scores: { difficulty: 4, revenue: 8, viral: 5 },
-    moat: 'Le coût de changement grimpe une fois l’identité sonore installée.',
-    firstAction: 'Signer 3 équipes pilotes à 19 $ / mois pour valider la rétention.',
-    stats: [
-      { value: '100 %', label: 'revenus récurrents' },
-      { value: '470 K$', label: 'à 1 000 équipes' },
-      { value: '90 %', label: 'rétention cible' },
-    ],
-    timeline: [
-      { period: 'Mois 1–3', milestone: '10 équipes pilotes; livraison automatisée; mesurer la rétention.' },
-      { period: 'Mois 4–9', milestone: '100 équipes via le réseau sportif; prix 29–39 $ / mois.' },
-      { period: 'Mois 10–18', milestone: 'Plateforme web, Canada anglais, associations partenaires, 400 équipes.' },
-      { period: 'Mois 19–24', milestone: '1 000 équipes, 2 producteurs juniors, expansion É.-U., 450 K$ ARR.' },
-    ],
-  },
-  {
-    id: 21,
+    id: 10,
     slug: 'glow-games',
     name: 'Glow Games',
     tagline: 'Le sport devient un show.',
@@ -576,76 +318,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 22,
-    slug: 'drop-challenge',
-    name: 'The Drop Challenge',
-    tagline: 'TikTok, en vrai, avec tes amis.',
-    pitch:
-      "Les tendances TikTok transformées en épreuves physiques réelles : défis de danse chronométrés, battles de lip-sync, classement en direct. Les vidéos des participants alimentent la marque, qui alimente le prochain événement — une boucle virale par design.",
-    category: 'game',
-    flagship: false,
-    palette: { accent: '#FF0050', surface: '#12030A' },
-    audience:
-      'Les jeunes veulent vivre TikTok en vrai; chaque événement génère des centaines de vidéos.',
-    revenueModel: 'Inscriptions 10–15 $, billetterie, commandites jeunesse.',
-    startupCost: '~500 $',
-    scores: { difficulty: 4, revenue: 7, viral: 10 },
-    moat: 'La vitesse d’adaptation aux tendances : un ado gagne toujours contre une agence.',
-    firstAction: 'Mini-défi à 20 participants après une pratique sportive + recap publié.',
-    stats: [
-      { value: '10/10', label: 'viralité' },
-      { value: '100+', label: 'vidéos / événement' },
-      { value: '15 $', label: 'l’inscription' },
-    ],
-  },
-  {
-    id: 23,
-    slug: 'beat-lab-virtuel',
-    name: 'Beat Lab Virtuel',
-    tagline: 'Le premier DJ ado natif du métavers.',
-    pitch:
-      "Un lieu virtuel sur Roblox où les jeunes assistent à des DJ sets, apprennent les bases du mix et jouent à des mini-jeux musicaux. Des dizaines de millions de jeunes y sont déjà chaque jour — les concerts virtuels y attirent des millions de visites.",
-    category: 'digital',
-    flagship: false,
-    palette: { accent: '#7000FF', surface: '#08030F' },
-    audience:
-      'Aucune limite géographique; les fans physiques suivent en ligne et vice-versa.',
-    revenueModel: 'Objets virtuels (Robux), accès VIP, entonnoir vers les événements réels.',
-    startupCost: '0–500 $',
-    scores: { difficulty: 7, revenue: 8, viral: 8 },
-    moat: 'La compétence Roblox Studio + une audience réelle à convertir.',
-    firstAction: '2 h dans Roblox Studio + visiter les 3 expériences musicales les plus populaires.',
-    stats: [
-      { value: '70 M+', label: 'joueurs quotidiens sur Roblox' },
-      { value: '0 km', label: 'de déplacement' },
-      { value: '8/10', label: 'potentiel revenus' },
-    ],
-  },
-  {
-    id: 24,
-    slug: 'family-face-off',
-    name: 'Family Face-Off',
-    tagline: 'Ta famille contre toutes les autres.',
-    pitch:
-      "L'événement mensuel où les familles s'affrontent : relais rythmés, quiz musical intergénérationnel, battles de danse parents-enfants, championnat de saison. Disney vend la magie familiale; nous vendons la compétition familiale.",
-    category: 'community',
-    flagship: false,
-    palette: { accent: '#FF6B35', surface: '#120704' },
-    audience:
-      'Les parents veulent PARTICIPER avec leurs ados, pas juste regarder; la rivalité familiale est un moteur puissant.',
-    revenueModel: '40–60 $ / famille / événement, abonnement de saison, commandites familiales.',
-    startupCost: '~800 $',
-    scores: { difficulty: 5, revenue: 7, viral: 8 },
-    moat: 'La communauté récurrente : la fidélité des familles est difficile à voler.',
-    firstAction: 'Tester 3 épreuves avec 4 familles du quartier un dimanche.',
-    stats: [
-      { value: '60 $', label: 'par famille' },
-      { value: '1×', label: 'par mois' },
-      { value: '8/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 25,
+    id: 11,
     slug: 'soundtrack-city',
     name: 'Soundtrack City',
     tagline: 'Le DJ officiel de ta ville.',
@@ -669,7 +342,7 @@ export const startups: Startup[] = [
   },
 ];
 
-/** Les 5 flagships pour la section « Vision investisseur » */
+/** Les concepts phares pour la section « Concepts phares » */
 export const flagships = startups.filter((s) => s.flagship);
 
 /** Libellés de catégories pour les filtres de la carte interactive */

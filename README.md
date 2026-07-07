@@ -1,8 +1,8 @@
-# DJ King Éloi — 25 façons de réinventer le divertissement
+# DJ King Éloi — façons originales de faire du DJ
 
-Site immersif présentant 25 concepts de startups autour de DJ King E (Éloi,
-15 ans). Next.js 15 · TypeScript strict · Tailwind v4 · GSAP + ScrollTrigger ·
-Lenis · motion · React Three Fiber.
+Site immersif présentant des façons originales de faire du DJ, imaginées par
+DJ King E (Éloi, 15 ans). Next.js 15 · TypeScript strict · Tailwind v4 ·
+GSAP + ScrollTrigger · Lenis · motion · React Three Fiber.
 
 ## Installation
 
@@ -19,8 +19,9 @@ npx tsc --noEmit   # vérification des types
 Tout le contenu vit dans deux fichiers — ne jamais éditer les composants
 pour changer un texte :
 
-- **`src/data/startups.ts`** — les 25 concepts (source de vérité unique) :
-  noms, pitchs, palettes, scores, timelines des flagships.
+- **`src/data/startups.ts`** — les concepts (source de vérité unique), un
+  seul par vraie photo disponible : noms, pitchs, palettes, scores,
+  timelines des concepts phares.
 - **`src/data/profile.ts`** — le vrai profil d'Éloi : bio, tagline, services
   réservables, contact. Les champs `TODO` sont masqués à l'affichage tant
   qu'ils ne sont pas remplis.
@@ -42,17 +43,19 @@ public/media/beat-battle-league/
 ```
 
 Tant qu'un fichier n'existe pas, `<MediaSlot />` affiche automatiquement un
-placeholder premium (surface de la startup, bruit subtil, monogramme). Aucun
+placeholder premium (surface du concept, bruit subtil, monogramme). Aucun
 autre changement n'est nécessaire : ajouter le fichier suffit.
 
-**Médias réels déjà en place** (2026-07-07) : portrait et logo de DJ King E,
-plus une photo pour chacune des startups suivantes — `soundtrack-city`,
-`beat-battle-league`, `sonic-rush`, `neon-nights`, `dj-tournois`,
-`glow-games`, `roller-beats`, `podium-sound`, `halftime-heroes`, `beat-fit`
-(×2), `mixtape-academy`. Les catégories `live` et `game` utilisent désormais
-`photo` (au lieu de `video` / `mockup-desktop`) comme média de hero par
-défaut, faute de vraies vidéos/mockups — à ajuster dans
-`StartupHero.tsx` (`HERO_MEDIA`) dès que ces assets existeront.
+**Seuls les concepts avec une vraie photo sont gardés dans `startups.ts`**
+(2026-07-07) : `soundtrack-city`, `beat-battle-league`, `sonic-rush`,
+`neon-nights`, `dj-tournois`, `glow-games`, `roller-beats`, `podium-sound`,
+`halftime-heroes`, `beat-fit` (×2), `mixtape-academy` — plus portrait et
+logo de DJ King E. Les concepts sans média réel ont été retirés du site
+(règle du projet : ne garder que ce qui est illustré). Les catégories
+`live` et `game` utilisent désormais `photo` (au lieu de `video` /
+`mockup-desktop`) comme média de hero par défaut, faute de vraies
+vidéos/mockups — à ajuster dans `StartupHero.tsx` (`HERO_MEDIA`) dès que
+ces assets existeront.
 
 Une vidéo brute de DJ King E en train de mixer est archivée dans
 `public/media/dj-king-e/dj-set-1-eloi-source.mov` (non branchée : nécessite
@@ -67,7 +70,7 @@ src/
   components/
     media/MediaSlot.tsx   slot média unique (jamais de <img> direct)
     sections/             les 10 sections du voyage principal
-    startup/              le template des 25 pages startup (5 variantes)
+    startup/              le template des pages concept (5 variantes de hero)
     ui/                   primitives (jauges, count-up, boutons magnétiques)
     effects/              moments WOW globaux
   hooks/                useLenis, useMagneticCursor, usePrefersReducedMotion

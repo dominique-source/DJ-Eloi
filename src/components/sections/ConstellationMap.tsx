@@ -5,7 +5,9 @@ import { categoryLabels, startups, type Category } from '@/data/startups';
 import { siteCopy } from '@/data/site';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 
-const categories = Object.keys(categoryLabels) as Category[];
+const categories = (Object.keys(categoryLabels) as Category[]).filter((category) =>
+  startups.some((s) => s.category === category),
+);
 
 // Positions déterministes en spirale (angle d'or) — stables entre rendus.
 const nodes = startups.map((startup, index) => {

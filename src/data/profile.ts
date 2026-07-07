@@ -2,7 +2,7 @@
  * ============================================================
  * PROFIL RÉEL — DJ King E
  * ============================================================
- * Contrairement à data/startups.ts (les 25 concepts explorés),
+ * Contrairement à data/startups.ts (les façons originales de faire du DJ),
  * ce fichier contient les VRAIES informations d'Éloi qui
  * alimentent le hero, la bio, les services réservables et le
  * formulaire de contact.

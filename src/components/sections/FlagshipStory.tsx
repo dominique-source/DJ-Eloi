@@ -57,7 +57,7 @@ function FlagshipPanel({ startup, order }: { startup: Startup; order: number }) 
   );
 }
 
-/** Storytelling horizontal GSAP : 5 flagships comme panneaux keynote. */
+/** Storytelling horizontal GSAP : les concepts phares comme panneaux keynote. */
 export function FlagshipStory() {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);

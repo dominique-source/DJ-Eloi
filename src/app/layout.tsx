@@ -5,6 +5,7 @@ import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { WowEffects } from '@/components/effects/WowEffects';
 import { profile } from '@/data/profile';
+import { startups } from '@/data/startups';
 
 const display = Archivo({
   subsets: ['latin'],
@@ -18,8 +19,8 @@ const grotesque = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${profile.djName} — 25 façons de réinventer le divertissement`,
-  description: `L'univers de ${profile.djName} : 25 concepts de startups autour d'un DJ de ${profile.age} ans qui réinvente le divertissement par la musique.`,
+  title: `${profile.djName} — ${startups.length} façons originales de faire du DJ`,
+  description: `L'univers de ${profile.djName} : ${startups.length} façons originales de faire du DJ, imaginées par un DJ de ${profile.age} ans.`,
 };
 
 export const viewport: Viewport = {

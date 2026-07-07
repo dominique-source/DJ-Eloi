@@ -1,9 +1,10 @@
 import { profile } from './profile';
+import { flagships, startups } from './startups';
 
 /**
  * Copie éditoriale du site (labels de sections, titres, formulaires).
- * Les contenus des 25 startups restent dans startups.ts ; le profil
- * réel d'Éloi dans profile.ts.
+ * Les concepts DJ restent dans startups.ts ; le profil réel d'Éloi
+ * dans profile.ts.
  */
 
 /** Coupe les mentions TODO d'un texte brouillon avant affichage. */
@@ -18,14 +19,13 @@ export function isDraft(value: string): boolean {
 
 export const siteCopy = {
   hero: {
-    kicker: `${profile.age} ans · 25 concepts · 1 vision`,
-    subtitle:
-      "25 concepts de startups nés derrière les platines d'un DJ de 15 ans. Bienvenue dans le futur du divertissement.",
+    kicker: `${profile.age} ans · ${startups.length} concepts · 1 vision`,
+    subtitle: `${startups.length} façons originales de faire du DJ, imaginées par un DJ de ${profile.age} ans. Bienvenue dans le futur du divertissement.`,
     scrollHint: 'Défile pour entrer',
   },
   manifesto: {
     label: 'Manifesto',
-    text: "Ceci n'est pas un site de DJ. C'est la preuve qu'à 15 ans on peut réinventer le divertissement : vingt-cinq façons de transformer la musique en expériences, en jeux, en communautés. Chaque concept existe déjà dans sa tête. Il ne reste qu'à appuyer sur play.",
+    text: `${startups.length} façons originales de faire du DJ. Pas un site vitrine — la preuve qu'à 15 ans on peut réinventer ce qu'un DJ peut être : un mix, un jeu, une communauté, un spectacle. Chaque concept est une idée vraie, prête à être vécue.`,
   },
   about: {
     label: 'Le vrai visage',
@@ -34,26 +34,26 @@ export const siteCopy = {
     label: 'Pourquoi cette vision',
     title: 'Des idées. Et des chiffres.',
     stats: [
-      { value: 25, suffix: '', label: 'concepts de startups explorés' },
-      { value: 5, suffix: '', label: 'flagships niveau investisseur' },
-      { value: 15, suffix: ' ans', label: 'derrière les platines' },
+      { value: startups.length, suffix: '', label: 'façons originales de faire du DJ' },
+      { value: flagships.length, suffix: '', label: 'concepts phares' },
+      { value: profile.age, suffix: ' ans', label: 'derrière les platines' },
     ],
   },
   grid: {
-    label: 'Les 25 startups',
-    title: 'Choisis ton futur.',
+    label: 'Les concepts',
+    title: 'Des façons originales de faire du DJ.',
     all: 'Tout voir',
-    filterAria: 'Filtrer les startups par catégorie',
+    filterAria: 'Filtrer les concepts par catégorie',
   },
   flagshipStory: {
-    label: 'Vision investisseur',
-    title: 'Cinq paris majeurs.',
+    label: 'Concepts phares',
+    title: 'Les paris les plus audacieux.',
     cta: 'Découvrir',
   },
   roadmap: {
     label: 'Roadmap',
     title: '24 mois pour tout changer.',
-    note: 'Les jalons des cinq flagships, du battle pilote aux revenus récurrents.',
+    note: 'Les jalons des concepts phares, du battle pilote aux revenus récurrents.',
   },
   gallery: {
     label: 'Galerie',
@@ -118,7 +118,7 @@ export const siteCopy = {
     conceptLink: 'Le concept complet — Mixtape Academy',
   },
   footer: {
-    index: 'Index des 25 startups',
+    index: 'Les façons de faire du DJ',
     time: 'Heure locale',
     egg: 'Mode festival déverrouillé. 🎧',
     rights: 'Tous droits réservés.',

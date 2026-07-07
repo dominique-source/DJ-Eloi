@@ -1,11 +1,14 @@
-# CLAUDE.md — Projet « DJ King Éloi » (site immersif — 25 startups)
+# CLAUDE.md — Projet « DJ King Éloi » (site immersif — façons originales de faire du DJ)
 
 ## Contexte
 Marque affichée partout (hero, titres, SEO) : DJ King Éloi.
-Site vitrine immersif présentant 25 concepts de startups autour de DJ King Éloi,
-DJ de 15 ans. Le profil réel (bio, services, contact) vit dans src/data/profile.ts.
-Qualité cible : Awwwards / Framer Awards. Public : familles, partenaires, curieux.
-Langue du contenu : français (Québec). Langue du code : anglais.
+Site vitrine immersif présentant des façons originales de faire du DJ,
+imaginées par DJ King Éloi, DJ de 15 ans — pas un pitch de startups. Seuls
+les concepts illustrés par une vraie photo sont gardés dans le site (voir
+src/data/startups.ts). Le profil réel (bio, services, contact) vit dans
+src/data/profile.ts. Qualité cible : Awwwards / Framer Awards. Public :
+familles, partenaires, curieux. Langue du contenu : français (Québec).
+Langue du code : anglais.
 
 ## Commandes
 - npm run dev — développement
