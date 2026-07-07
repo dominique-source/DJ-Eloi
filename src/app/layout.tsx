@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Archivo, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { WowEffects } from '@/components/effects/WowEffects';
+import { profile } from '@/data/profile';
 
 const display = Archivo({
   subsets: ['latin'],
@@ -16,9 +18,12 @@ const grotesque = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: '25 Startups — Le futur du divertissement',
-  description:
-    "25 concepts de startups autour d'un DJ de 15 ans. 25 façons de réinventer le divertissement par la musique.",
+  title: `${profile.djName} — 25 façons de réinventer le divertissement`,
+  description: `L'univers de ${profile.djName} : 25 concepts de startups autour d'un DJ de ${profile.age} ans qui réinvente le divertissement par la musique.`,
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
 };
 
 /* Applique le thème sauvegardé avant le premier rendu (évite le flash). */
@@ -39,6 +44,7 @@ export default function RootLayout({
       >
         <SmoothScroll>
           <ThemeToggle />
+          <WowEffects />
           {children}
         </SmoothScroll>
       </body>

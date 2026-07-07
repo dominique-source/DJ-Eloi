@@ -39,6 +39,13 @@
   --rotate-signature: -8deg;
 }
 
+/* Nécessaire pour que le mode festival puisse animer la couleur accent. */
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ccff00;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -53,4 +60,78 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* --- Galerie : marquee infini à deux rangées, pause au survol --- */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- WOW n°1 : flash de la barre signature (barre espace) --- */
+.signature-flash {
+  transform: rotate(var(--rotate-signature)) scaleX(0);
+  transform-origin: left;
+  animation: signature-flash 0.7s ease-out forwards;
+}
+
+@keyframes signature-flash {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rotate-signature)) scaleX(0);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--rotate-signature)) scaleX(1);
+  }
+}
+
+/* --- WOW n°3 : mode « nuit de festival » (Konami code) --- */
+.festival {
+  animation: festival-accent 5s linear infinite;
+}
+
+@keyframes festival-accent {
+  0% { --accent: #ccff00; }
+  20% { --accent: #ff5a00; }
+  40% { --accent: #b517ff; }
+  60% { --accent: #1de9b6; }
+  80% { --accent: #39ff14; }
+  100% { --accent: #ccff00; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .festival {
+    animation: none;
+  }
+  .signature-flash {
+    animation: none;
+    opacity: 0;
+  }
 }

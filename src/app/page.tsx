@@ -1,23 +1,29 @@
-import { startups } from '@/data/startups';
+import { Hero } from '@/components/sections/Hero';
+import { Manifesto } from '@/components/sections/Manifesto';
+import { About } from '@/components/sections/About';
+import { ImpactStats } from '@/components/sections/ImpactStats';
+import { StartupGrid } from '@/components/sections/StartupGrid';
+import { FlagshipStory } from '@/components/sections/FlagshipStory';
+import { Roadmap } from '@/components/sections/Roadmap';
+import { Gallery } from '@/components/sections/Gallery';
+import { ConstellationMap } from '@/components/sections/ConstellationMap';
+import { ContactCTA } from '@/components/sections/ContactCTA';
+import { Footer } from '@/components/sections/Footer';
 
-/* Page temporaire de la Phase 0 — remplacée par le voyage complet en Phase 2. */
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-start justify-center gap-6 px-8 md:px-16">
-      <p className="text-xs uppercase tracking-caps text-muted">
-        Phase 0 — Fondations
-      </p>
-      <h1 className="font-display text-6xl font-black italic tracking-title md:text-8xl">
-        25 Startups
-      </h1>
-      <p className="max-w-md text-muted">
-        {startups.length} concepts chargés depuis la source de vérité unique.
-        Le voyage commence à la Phase 2.
-      </p>
-      <span
-        aria-hidden
-        className="mt-4 block h-2 w-40 origin-left rotate-(--rotate-signature) bg-accent"
-      />
+    <main>
+      <Hero />
+      <Manifesto />
+      <About />
+      <ImpactStats />
+      <StartupGrid />
+      <FlagshipStory />
+      <Roadmap />
+      <Gallery />
+      <ConstellationMap />
+      <ContactCTA />
+      <Footer />
     </main>
   );
 }
