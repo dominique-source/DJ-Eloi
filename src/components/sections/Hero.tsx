@@ -58,7 +58,7 @@ export function Hero() {
     >
       <div className="absolute inset-0" aria-hidden>
         <MediaSlot
-          type="video"
+          type="photo"
           slug="dj-king-e"
           name={profile.djName}
           surface="#0d0d0d"

@@ -9,9 +9,9 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 // Cinq variantes de hero : média et disposition propres à chaque catégorie.
 const HERO_MEDIA: Record<Category, MediaType> = {
-  live: 'video',
+  live: 'photo',
   sport: 'photo',
-  game: 'mockup-desktop',
+  game: 'photo',
   digital: 'mockup-mobile',
   community: 'photo',
 };

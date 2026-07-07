@@ -16,7 +16,7 @@ export type MediaType =
 const FILE_BY_TYPE: Record<MediaType, (index: number) => string> = {
   video: () => 'hero.mp4',
   photo: (index) => `gallery-0${index}.jpg`,
-  logo: () => 'logo.svg',
+  logo: () => 'logo.png',
   'mockup-mobile': () => 'mockup-mobile.png',
   'mockup-desktop': () => 'mockup-desktop.png',
   portrait: () => 'portrait.jpg',

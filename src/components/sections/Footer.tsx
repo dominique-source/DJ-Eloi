@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { startups } from '@/data/startups';
 import { profile } from '@/data/profile';
@@ -12,10 +13,14 @@ export function Footer() {
 
   return (
     <footer className="border-t border-foreground/10 px-8 py-16 md:px-16">
-      <div className="flex flex-wrap items-baseline justify-between gap-4">
-        <p className="font-display text-3xl font-black italic tracking-title">
-          {profile.djName}
-        </p>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <Image
+          src="/media/dj-king-e/logo.png"
+          alt={profile.djName}
+          width={900}
+          height={900}
+          className="h-11 w-11 object-contain"
+        />
         <LocalTime label={siteCopy.footer.time} />
       </div>
 

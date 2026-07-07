@@ -45,6 +45,20 @@ Tant qu'un fichier n'existe pas, `<MediaSlot />` affiche automatiquement un
 placeholder premium (surface de la startup, bruit subtil, monogramme). Aucun
 autre changement n'est nécessaire : ajouter le fichier suffit.
 
+**Médias réels déjà en place** (2026-07-07) : portrait et logo de DJ King E,
+plus une photo pour chacune des startups suivantes — `soundtrack-city`,
+`beat-battle-league`, `sonic-rush`, `neon-nights`, `dj-tournois`,
+`glow-games`, `roller-beats`, `podium-sound`, `halftime-heroes`, `beat-fit`
+(×2), `mixtape-academy`. Les catégories `live` et `game` utilisent désormais
+`photo` (au lieu de `video` / `mockup-desktop`) comme média de hero par
+défaut, faute de vraies vidéos/mockups — à ajuster dans
+`StartupHero.tsx` (`HERO_MEDIA`) dès que ces assets existeront.
+
+Une vidéo brute de DJ King E en train de mixer est archivée dans
+`public/media/dj-king-e/dj-set-1-eloi-source.mov` (non branchée : nécessite
+une conversion en `.mp4` optimisé web — via ffmpeg ou Handbrake — avant de
+devenir `hero.mp4`).
+
 ## Architecture
 
 ```
