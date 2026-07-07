@@ -1,7 +1,5 @@
 import { Hero } from '@/components/sections/Hero';
-import { Manifesto } from '@/components/sections/Manifesto';
 import { About } from '@/components/sections/About';
-import { ImpactStats } from '@/components/sections/ImpactStats';
 import { StartupGrid } from '@/components/sections/StartupGrid';
 import { FlagshipStory } from '@/components/sections/FlagshipStory';
 import { Roadmap } from '@/components/sections/Roadmap';
@@ -15,9 +13,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Manifesto />
       <About />
-      <ImpactStats />
       <StartupGrid />
       <FlagshipStory />
       <Roadmap />
