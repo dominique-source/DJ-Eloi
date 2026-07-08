@@ -1,6 +1,6 @@
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
-import { StartupGrid } from '@/components/sections/StartupGrid';
+import { ConsoleShowcase } from '@/components/sections/ConsoleShowcase';
 import { FlagshipStory } from '@/components/sections/FlagshipStory';
 import { Gallery } from '@/components/sections/Gallery';
 import { DJAcademy } from '@/components/sections/DJAcademy';
@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <Hero />
       <About />
-      <StartupGrid />
+      <ConsoleShowcase />
       <FlagshipStory />
       <Gallery />
       <DJAcademy />

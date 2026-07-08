@@ -21,8 +21,6 @@ export const siteCopy = {
   grid: {
     label: 'Les concepts',
     title: 'Des façons originales de faire du DJ.',
-    all: 'Tout voir',
-    filterAria: 'Filtrer les concepts par catégorie',
   },
   flagshipStory: {
     label: 'Concepts phares',

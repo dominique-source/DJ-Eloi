@@ -7,8 +7,9 @@
  * modifier UNIQUEMENT ce fichier. Aucun texte ne doit être
  * codé en dur dans les composants.
  *
- * Seuls les concepts avec de vrais médias sont gardés ici (voir
- * /public/media/{slug}/). Convention des médias (placeholders
+ * Sélection finale (2026-07-08) : seuls les 5 concepts retenus par
+ * Dominique restent ici — Beat Fit, Beat Battle League, Sonic Rush,
+ * Neon Nights, Glow Games. Convention des médias (placeholders
  * premium tant qu'un fichier n'existe pas) :
  *   /public/media/{slug}/logo.png
  *   /public/media/{slug}/hero.mp4        (fallback: hero.jpg)
@@ -65,75 +66,29 @@ export interface Startup {
 export const startups: Startup[] = [
   {
     id: 1,
-    slug: 'dj-tournois',
-    name: 'DJ de Tournois Jeunesse',
-    tagline: 'Chaque gymnase devient une arène.',
+    slug: 'beat-fit',
+    name: 'Beat Fit',
+    tagline: 'L’entraînement où le DJ est le coach.',
     pitch:
-      "La sonorisation et l'ambiance des tournois de basket, soccer, volleyball et cheerleading. Musique d'échauffement, drops entre les jeux, animation de foule — un gymnase froid devient un événement dont on parle.",
+      "Des séances de groupe où le mix EST le programme : les BPM dictent l'intensité, les drops déclenchent les burpees, les breaks sont la récupération. HYROX rencontre le DJing — 50 personnes dirigées comme un orchestre du cardio.",
     category: 'sport',
     flagship: false,
-    palette: { accent: '#FF8A00', surface: '#120C05' },
+    palette: { accent: '#FFD500', surface: '#121003' },
     audience:
-      'Les jeunes athlètes se sentent comme des pros; les parents filment tout; les organisateurs se démarquent.',
-    revenueModel: '300–600 $ / jour de tournoi, forfaits saisonniers.',
-    startupCost: '0 $ (matériel existant)',
-    scores: { difficulty: 3, revenue: 6, viral: 6 },
-    moat: 'Réseau sportif + compréhension des codes du sport.',
-    firstAction: 'Vidéo démo de 60 s envoyée à 5 organisateurs locaux.',
+      'L’entraînement devient une fête; la musique efface la souffrance mentale du cardio.',
+    revenueModel: '10–15 $ / participant, forfaits équipes, événements corporatifs familiaux.',
+    startupCost: '0–200 $',
+    scores: { difficulty: 4, revenue: 8, viral: 9 },
+    moat: 'Un coach ne sait pas mixer; un DJ ne sait pas entraîner. Lui fait les deux.',
+    firstAction: 'Séance de 30 min testée avec son équipe, filmée.',
     stats: [
-      { value: '600 $', label: 'par jour de tournoi' },
-      { value: '0 $', label: 'd’investissement' },
-      { value: '6/10', label: 'viralité' },
+      { value: '160', label: 'BPM en zone rouge' },
+      { value: '50', label: 'participants / séance' },
+      { value: '9/10', label: 'viralité' },
     ],
   },
   {
     id: 2,
-    slug: 'roller-beats',
-    name: 'Roller Beats',
-    tagline: 'Le vendredi soir sur roues.',
-    pitch:
-      "Des soirées patin et roller disco pour ados : DJ live, jeux musicaux, lumières. Le roller revient en force mondialement — personne ne le fait pour les 12–17 ans, sans alcool, avec l'approbation totale des parents.",
-    category: 'live',
-    flagship: false,
-    palette: { accent: '#FF2EC4', surface: '#10040D' },
-    audience:
-      'Activité physique + musique + social : la sortie parfaite approuvée à 100 % par les parents.',
-    revenueModel: 'Partage de billetterie (5–8 $ × 100–300 entrées) ou cachet fixe.',
-    startupCost: '0–300 $',
-    scores: { difficulty: 4, revenue: 7, viral: 8 },
-    moat: 'Le vendredi soir verrouillé avec l’aréna devient un territoire.',
-    firstAction: 'Soirée pilote 50/50 proposée à un aréna (zéro risque pour eux).',
-    stats: [
-      { value: '300', label: 'patineurs / soirée' },
-      { value: '8/10', label: 'viralité' },
-      { value: '50/50', label: 'partage sans risque' },
-    ],
-  },
-  {
-    id: 3,
-    slug: 'podium-sound',
-    name: 'Podium Sound',
-    tagline: 'Chaque fil d’arrivée devient un moment de gloire.',
-    pitch:
-      "L'ambiance officielle des courses familiales et événements participatifs : zone de départ électrisante, tunnel sonore au kilomètre difficile, ligne d'arrivée où chaque finissant a sa chanson. Le modèle Color Run, appliqué localement.",
-    category: 'sport',
-    flagship: false,
-    palette: { accent: '#00D68F', surface: '#04110C' },
-    audience:
-      'Franchir un fil d’arrivée avec SA chanson = souvenir à vie; les inscriptions montent.',
-    revenueModel: '400–900 $ / événement, forfaits avec circuits de course.',
-    startupCost: '~500 $',
-    scores: { difficulty: 3, revenue: 6, viral: 6 },
-    moat: 'Le calendrier est limité : être établi = bloquer les dates.',
-    firstAction: 'Contacter les 5 prochaines courses familiales au calendrier.',
-    stats: [
-      { value: '900 $', label: 'par événement' },
-      { value: '3', label: 'zones sonores' },
-      { value: '6/10', label: 'revenus' },
-    ],
-  },
-  {
-    id: 4,
     slug: 'beat-battle-league',
     name: 'Beat Battle League',
     tagline: 'Le premier sport du DJing.',
@@ -162,7 +117,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 5,
+    id: 3,
     slug: 'sonic-rush',
     name: 'Sonic Rush',
     tagline: 'La course où la musique est le jeu.',
@@ -191,30 +146,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 6,
-    slug: 'beat-fit',
-    name: 'Beat Fit',
-    tagline: 'L’entraînement où le DJ est le coach.',
-    pitch:
-      "Des séances de groupe où le mix EST le programme : les BPM dictent l'intensité, les drops déclenchent les burpees, les breaks sont la récupération. HYROX rencontre le DJing — 50 personnes dirigées comme un orchestre du cardio.",
-    category: 'sport',
-    flagship: false,
-    palette: { accent: '#FFD500', surface: '#121003' },
-    audience:
-      'L’entraînement devient une fête; la musique efface la souffrance mentale du cardio.',
-    revenueModel: '10–15 $ / participant, forfaits équipes, événements corporatifs familiaux.',
-    startupCost: '0–200 $',
-    scores: { difficulty: 4, revenue: 8, viral: 9 },
-    moat: 'Un coach ne sait pas mixer; un DJ ne sait pas entraîner. Lui fait les deux.',
-    firstAction: 'Séance de 30 min testée avec son équipe, filmée.',
-    stats: [
-      { value: '160', label: 'BPM en zone rouge' },
-      { value: '50', label: 'participants / séance' },
-      { value: '9/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 7,
+    id: 4,
     slug: 'neon-nights',
     name: 'Neon Nights',
     tagline: 'La boîte de nuit que les ados n’avaient pas le droit d’avoir.',
@@ -243,53 +175,7 @@ export const startups: Startup[] = [
     ],
   },
   {
-    id: 8,
-    slug: 'halftime-heroes',
-    name: 'Halftime Heroes',
-    tagline: 'La mi-temps devient le moment fort du match.',
-    pitch:
-      "Des shows de mi-temps pour le sport scolaire et civil : DJ, concours dans la foule, défis synchronisés à la musique, fan cam. Les mi-temps jeunesse sont mortes — transformées en mini Super Bowl.",
-    category: 'sport',
-    flagship: false,
-    palette: { accent: '#FFB300', surface: '#120D02' },
-    audience:
-      'Les spectateurs deviennent la vedette; les jeunes restent au match au complet.',
-    revenueModel: '200–400 $ / match, forfaits saison, commandites locales intégrées.',
-    startupCost: '~300 $',
-    scores: { difficulty: 3, revenue: 6, viral: 7 },
-    moat: 'Le réseau dans les ligues; l’énergie ne se copie pas.',
-    firstAction: 'Mi-temps gratuite au prochain gros match local, réaction captée.',
-    stats: [
-      { value: '10 min', label: 'de show' },
-      { value: '1 800 $', label: 'forfait 10 matchs' },
-      { value: '7/10', label: 'viralité' },
-    ],
-  },
-  {
-    id: 9,
-    slug: 'mixtape-academy',
-    name: 'Mixtape Academy',
-    tagline: 'Apprends à mixer avec quelqu’un qui te ressemble.',
-    pitch:
-      "L'école de DJ des 10–15 ans, enseignée PAR un ado : camps, ateliers, cours privés, fêtes « apprends à mixer ». Progression gamifiée par niveaux — Rookie, Selector, Mixmaster, Headliner — inspirée de Duolingo.",
-    category: 'community',
-    flagship: false,
-    palette: { accent: '#00C2FF', surface: '#030D12' },
-    audience:
-      'Les parents cherchent du créatif hors écran passif; les enfants idolâtrent un prof de 15 ans.',
-    revenueModel: '40–60 $ / cours privé, ateliers 25 $, camps 200 $ / semaine.',
-    startupCost: '~500 $',
-    scores: { difficulty: 3, revenue: 7, viral: 7 },
-    moat: 'Un curriculum par niveaux devient un actif licenciable.',
-    firstAction: 'Créer le niveau 1 (4 leçons) + atelier gratuit au service de garde.',
-    stats: [
-      { value: '4', label: 'niveaux de progression' },
-      { value: '200 $', label: 'camp / semaine' },
-      { value: '7/10', label: 'revenus' },
-    ],
-  },
-  {
-    id: 10,
+    id: 5,
     slug: 'glow-games',
     name: 'Glow Games',
     tagline: 'Le sport devient un show.',
@@ -317,35 +203,12 @@ export const startups: Startup[] = [
       { period: 'Mois 19–24', milestone: '10 villes, étude d’une Glow Arena permanente, 350 K$ / an.' },
     ],
   },
-  {
-    id: 11,
-    slug: 'soundtrack-city',
-    name: 'Soundtrack City',
-    tagline: 'Le DJ officiel de ta ville.',
-    pitch:
-      "Le contrat de DJ jeunesse officiel d'une municipalité : piscines l'été, fêtes de quartier, patinoires l'hiver, événements des loisirs. Les villes ont des budgets récurrents et cherchent désespérément à rejoindre les 12–17 ans.",
-    category: 'community',
-    flagship: false,
-    palette: { accent: '#00A8E8', surface: '#020D12' },
-    audience:
-      'Les jeunes retrouvent « leur » DJ partout; la ville a une histoire jeunesse positive à raconter.',
-    revenueModel: 'Contrat annuel 3 000–8 000 $ / ville, extensible à plusieurs municipalités.',
-    startupCost: '0 $',
-    scores: { difficulty: 5, revenue: 7, viral: 5 },
-    moat: 'Les contrats municipaux sont lents à obtenir mais très durables.',
-    firstAction: 'Écrire au responsable des loisirs avec une offre pilote pour la prochaine fête de quartier.',
-    stats: [
-      { value: '8 K$', label: 'contrat annuel / ville' },
-      { value: '12', label: 'mois de visibilité' },
-      { value: '∞', label: 'de renouvellements' },
-    ],
-  },
 ];
 
 /** Les concepts phares pour la section « Concepts phares » */
 export const flagships = startups.filter((s) => s.flagship);
 
-/** Libellés de catégories pour les filtres de la carte interactive */
+/** Libellés de catégories (conservés pour référence, plus utilisés en filtre). */
 export const categoryLabels: Record<Category, string> = {
   live: 'Expériences live',
   sport: 'Sport × Musique',
