@@ -88,6 +88,21 @@ body {
   }
 }
 
+/* --- DJ Academy : platine qui tourne quand le deck joue --- */
+.platter {
+  animation: platter-spin 2.2s linear infinite;
+}
+
+.platter-paused {
+  animation-play-state: paused;
+}
+
+@keyframes platter-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* --- WOW n°1 : flash de la barre signature (barre espace) --- */
 .signature-flash {
   transform: rotate(var(--rotate-signature)) scaleX(0);
@@ -125,6 +140,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
+    animation: none;
+  }
+  .platter {
     animation: none;
   }
   .festival {

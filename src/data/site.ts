@@ -33,10 +33,6 @@ export const siteCopy = {
     label: 'Galerie',
     title: 'Des images du futur.',
   },
-  map: {
-    label: 'Carte des concepts',
-    title: 'Une constellation d’idées.',
-  },
   contact: {
     label: 'Contact',
     title: 'Réserve ton moment.',
@@ -55,41 +51,49 @@ export const siteCopy = {
   },
   academy: {
     label: 'DJ Academy',
-    title: 'Apprends les bases. Comme dans un jeu.',
+    title: 'Prends les commandes.',
     subtitle:
-      'Trois missions, du vrai son, un rang à gagner. Insère une pièce et prends les commandes.',
+      'Une vraie console, du vrai son. Joue librement, réussis les trois missions, gagne ton rang.',
     start: 'Press start',
     soundOff: 'Couper le son',
     soundOn: 'Relancer le son',
     xp: 'XP',
     rankLabel: 'Rang',
     ranks: ['Rookie', 'Selector', 'Mixmaster', 'Headliner'],
-    locked: 'Verrouillé',
-    active: 'En cours',
-    done: 'Réussi',
     missions: [
       {
         title: 'Cale le tempo',
         instruction:
-          'Tape sur le pad en suivant le beat. 8 frappes, le plus proche possible du temps.',
-        action: 'Tape sur le beat',
+          'Tape sur le pad TAP en suivant le beat — 8 frappes, le plus proche possible du temps.',
       },
       {
         title: 'Maîtrise le crossfade',
         instruction:
           'Fais glisser la fête du deck A vers le deck B — en douceur, pas d’un coup.',
-        action: 'Deck A → Deck B',
       },
       {
         title: 'Lâche le drop',
         instruction:
-          'Maintiens pour faire monter la pression, relâche pile sur le 1.',
-        action: 'Maintiens, puis relâche sur le 1',
+          'Maintiens DROP pour faire monter la pression, relâche pile quand le 1 s’allume.',
       },
     ],
+    missionLabel: 'Mission',
+    missionDone: 'Réussi',
+    freePlay: 'Console libre — continue de jouer.',
     replay: 'Rejouer',
     finale: 'Académie complétée. Ton rang :',
     conceptLink: 'Le concept complet — Mixtape Academy',
+    console: {
+      deck: 'Deck',
+      play: 'Play',
+      pause: 'Pause',
+      bpm: 'BPM',
+      pads: ['Kick', 'Hat', 'Clap', 'Stab'],
+      tap: 'Tap',
+      drop: 'Drop',
+      filter: 'Filtre',
+      crossfader: 'Crossfader',
+    },
   },
   footer: {
     index: 'Les façons de faire du DJ',
@@ -100,17 +104,6 @@ export const siteCopy = {
   startup: {
     back: 'Tous les concepts',
     concept: 'Le concept',
-    audience: 'Pourquoi ça marche',
-    revenue: 'Modèle de revenus',
-    cost: 'Coût de départ',
-    moat: 'Barrières à l’entrée',
-    firstAction: 'Première action cette semaine',
-    scores: 'Les scores',
-    difficulty: 'Difficulté',
-    revenueScore: 'Revenus',
-    viral: 'Viralité',
-    mockups: 'Aperçus produit',
-    timeline: 'Plan 24 mois',
     flagshipTag: 'Flagship',
     prev: 'Concept précédent',
     next: 'Concept suivant',

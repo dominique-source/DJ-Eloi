@@ -78,13 +78,19 @@ src/
   lib/animations.ts     easing et durées partagés
 ```
 
-## DJ Academy (section jeu vidéo)
+## DJ Academy (console interactive)
 
-Mini-jeu jouable sur la page d'accueil : trois missions (caler le tempo,
-maîtriser le crossfade, lâcher le drop sur le 1) avec du son synthétisé en
-Web Audio — aucun fichier audio requis. La progression (XP + rang Rookie →
-Headliner) est sauvegardée en localStorage. Textes éditables dans
-`src/data/site.ts` (`academy`).
+Une vraie console de DJ jouable sur la page d'accueil : deux decks avec
+platines qui tournent (play/pause), 4 pads de performance par deck (kick,
+hat, clap, stab), crossfader et filtre branchés sur le moteur Web Audio,
+LED de beat 1-2-3-4, bouton DROP. Les trois missions (tempo, crossfade,
+drop) se jouent directement sur la console ; la progression (XP + rang
+Rookie → Headliner) est sauvegardée en localStorage, puis la console
+reste en jeu libre. Textes éditables dans `src/data/site.ts` (`academy`).
+
+Note : les pages concept ne montrent volontairement aucun contenu
+« investisseur » (revenus, coûts, scores, plan 24 mois) — seulement le
+pitch et trois chiffres d'ambiance.
 
 ## Moments cachés
 

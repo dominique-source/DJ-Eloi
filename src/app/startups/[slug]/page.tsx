@@ -5,9 +5,6 @@ import { startups } from '@/data/startups';
 import { profile } from '@/data/profile';
 import { StartupHero } from '@/components/startup/StartupHero';
 import { StartupDetails } from '@/components/startup/StartupDetails';
-import { StartupScores } from '@/components/startup/StartupScores';
-import { StartupMockups } from '@/components/startup/StartupMockups';
-import { StartupTimeline } from '@/components/startup/StartupTimeline';
 import { StartupNav } from '@/components/startup/StartupNav';
 
 interface PageProps {
@@ -48,9 +45,6 @@ export default async function StartupPage({ params }: PageProps) {
     >
       <StartupHero startup={startup} />
       <StartupDetails startup={startup} />
-      <StartupScores startup={startup} />
-      <StartupMockups startup={startup} />
-      <StartupTimeline startup={startup} />
       <StartupNav prev={prev} next={next} />
     </main>
   );

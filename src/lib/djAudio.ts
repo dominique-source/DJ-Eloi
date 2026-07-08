@@ -30,6 +30,7 @@ export class DJEngine {
   private noiseBuffer: AudioBuffer | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
   private riser: { osc: OscillatorNode; gain: GainNode } | null = null;
+  private playing: Record<DeckId, boolean> = { a: true, b: true };
 
   get running(): boolean {
     return this.timer !== null;
@@ -130,6 +131,44 @@ export class DJEngine {
     return this.beatPhase();
   }
 
+  /** Lecture / pause d'un deck (le séquenceur saute les decks en pause). */
+  setDeckPlaying(id: DeckId, on: boolean): void {
+    const ctx = this.ctx;
+    const deck = this.decks?.[id];
+    this.playing[id] = on;
+    if (on && ctx && deck) {
+      deck.step = 0;
+      deck.nextTime = ctx.currentTime + 0.05;
+      deck.startTime = deck.nextTime;
+    }
+  }
+
+  isDeckPlaying(id: DeckId): boolean {
+    return this.playing[id];
+  }
+
+  /** Pad de performance : déclenche un son immédiat sur la sortie maître. */
+  padHit(kind: 'kick' | 'hat' | 'clap' | 'stab'): void {
+    const ctx = this.ctx;
+    const master = this.master;
+    if (!ctx || !master) return;
+    const now = ctx.currentTime;
+    if (kind === 'kick') this.playKick(master, now);
+    else if (kind === 'hat') this.playHat(master, now, true);
+    else if (kind === 'clap') this.playClap(master, now);
+    else this.playStab(master, now);
+  }
+
+  /** Filtre passe-haut maître (0 = plein son, 1 = tout filtré). */
+  setFilterCutoff(value: number): void {
+    const ctx = this.ctx;
+    if (!ctx || !this.filter || this.riser) return;
+    const t = Math.min(Math.max(value, 0), 1);
+    const frequency = 20 * Math.pow(125, t); // 20 Hz → 2 500 Hz
+    this.filter.frequency.cancelScheduledValues(ctx.currentTime);
+    this.filter.frequency.setTargetAtTime(frequency, ctx.currentTime, 0.05);
+  }
+
   beginBuild(): void {
     const ctx = this.ctx;
     if (!ctx || !this.filter || !this.master || this.riser) return;
@@ -176,6 +215,7 @@ export class DJEngine {
     const decks = this.decks;
     if (!ctx || !decks) return;
     (Object.keys(decks) as DeckId[]).forEach((id) => {
+      if (!this.playing[id]) return;
       const deck = decks[id];
       const stepDuration = 60 / deck.bpm / 4;
       if (deck.nextTime < ctx.currentTime - 0.2) {
@@ -249,6 +289,47 @@ export class DJEngine {
     gain.connect(dest);
     osc.start(time);
     osc.stop(time + 0.2);
+  }
+
+  private playClap(dest: GainNode, time: number): void {
+    const ctx = this.ctx as AudioContext;
+    if (!this.noiseBuffer) return;
+    [0, 0.03].forEach((offset) => {
+      const source = ctx.createBufferSource();
+      source.buffer = this.noiseBuffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 1500;
+      filter.Q.value = 1.2;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.5, time + offset);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + offset + 0.12);
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(dest);
+      source.start(time + offset);
+      source.stop(time + offset + 0.15);
+    });
+  }
+
+  private playStab(dest: GainNode, time: number): void {
+    const ctx = this.ctx as AudioContext;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 900;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.25, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
+    filter.connect(gain);
+    gain.connect(dest);
+    [196, 247, 294].forEach((frequency) => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.value = frequency;
+      osc.connect(filter);
+      osc.start(time);
+      osc.stop(time + 0.25);
+    });
   }
 
   private playCrash(dest: GainNode, time: number): void {
