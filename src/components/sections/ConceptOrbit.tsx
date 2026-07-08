@@ -1,16 +1,28 @@
 'use client';
 
-import Link from 'next/link';
+import Image from 'next/image';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { MediaSlot } from '@/components/media/MediaSlot';
 import { profile } from '@/data/profile';
-import { startups } from '@/data/startups';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+// Les 8 bulles de projets découpées de l'image originale « eloi project »
+// (public/media/dj-king-e/orbit-0X.jpg) — celles posées sur la table.
+const ORBIT_BUBBLES = [
+  'orbit-01.jpg',
+  'orbit-02.jpg',
+  'orbit-03.jpg',
+  'orbit-04.jpg',
+  'orbit-05.jpg',
+  'orbit-06.jpg',
+  'orbit-07.jpg',
+  'orbit-08.jpg',
+];
 
 // Ellipse en fraction de la taille du conteneur (perspective légère).
 const RADIUS_X = 0.42;
@@ -28,12 +40,13 @@ function orbitState(angle: number) {
 }
 
 function baseAngle(index: number) {
-  return (index / startups.length) * Math.PI * 2 + Math.PI / 2;
+  return (index / ORBIT_BUBBLES.length) * Math.PI * 2 + Math.PI / 2;
 }
 
 /**
- * Les concepts orbitent autour d'Éloi au scroll : un tour complet pendant
- * la traversée de la section, chaque projet grossit au premier plan et
+ * L'image « eloi project » rendue vivante : les bulles de projets de la
+ * table orbitent autour d'Éloi au scroll — un tour complet pendant la
+ * traversée de la section, chaque bulle grossit au premier plan et
  * rapetisse derrière. Version statique si prefers-reduced-motion.
  */
 export function ConceptOrbit() {
@@ -94,6 +107,8 @@ export function ConceptOrbit() {
   return (
     <div
       ref={container}
+      role="img"
+      aria-label={`${profile.djName} entouré de ses projets`}
       className="relative mx-auto aspect-[4/3] w-full max-w-3xl"
     >
       {/* Éloi au centre */}
@@ -107,17 +122,16 @@ export function ConceptOrbit() {
         />
       </div>
 
-      {/* Les concepts en orbite — positions statiques en SSR, GSAP anime ensuite */}
-      {startups.map((startup, index) => {
+      {/* Les bulles de projets en orbite — positions statiques en SSR, GSAP anime ensuite */}
+      {ORBIT_BUBBLES.map((file, index) => {
         const angle = baseAngle(index);
         const state = orbitState(angle);
         return (
-          <Link
-            key={startup.slug}
-            href={`/startups/${startup.slug}`}
-            aria-label={startup.name}
+          <div
+            key={file}
+            aria-hidden
             data-orbit-item
-            className="group absolute block w-[19%] overflow-hidden rounded-full border border-foreground/15 transition-[border-color] hover:border-accent focus-visible:border-accent"
+            className="absolute w-[21%] overflow-hidden rounded-full"
             style={{
               left: `${50 + Math.cos(angle) * RADIUS_X * 100}%`,
               top: `${50 + Math.sin(angle) * RADIUS_Y * 100}%`,
@@ -126,13 +140,14 @@ export function ConceptOrbit() {
               zIndex: state.zIndex,
             }}
           >
-            <MediaSlot
-              type="photo"
-              slug={startup.slug}
-              ratio="1/1"
-              className="h-full w-full"
+            <Image
+              src={`/media/dj-king-e/${file}`}
+              alt=""
+              width={218}
+              height={218}
+              className="aspect-square h-auto w-full object-cover"
             />
-          </Link>
+          </div>
         );
       })}
     </div>
