@@ -2,7 +2,6 @@ import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { StartupGrid } from '@/components/sections/StartupGrid';
 import { FlagshipStory } from '@/components/sections/FlagshipStory';
-import { Roadmap } from '@/components/sections/Roadmap';
 import { Gallery } from '@/components/sections/Gallery';
 import { ConstellationMap } from '@/components/sections/ConstellationMap';
 import { DJAcademy } from '@/components/sections/DJAcademy';
@@ -16,7 +15,6 @@ export default function Home() {
       <About />
       <StartupGrid />
       <FlagshipStory />
-      <Roadmap />
       <Gallery />
       <ConstellationMap />
       <DJAcademy />

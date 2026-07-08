@@ -28,13 +28,6 @@ export function Hero() {
         stagger: 0.08,
         delay: 0.7,
       });
-      gsap.from('[data-hero-sub]', {
-        opacity: 0,
-        y: 16,
-        duration: 0.8,
-        ease: 'expo.out',
-        delay: 1.2,
-      });
       gsap.from('[data-hero-bar]', {
         scaleX: 0,
         ease: 'none',
@@ -75,10 +68,7 @@ export function Hero() {
       )}
 
       <div className="relative z-20">
-        <p className="text-xs uppercase tracking-caps text-muted">
-          {siteCopy.hero.kicker}
-        </p>
-        <h1 className="mt-4 font-display text-[14vw] font-black italic leading-[0.92] tracking-title md:text-[9vw]">
+        <h1 className="font-display text-[14vw] font-black italic leading-[0.92] tracking-title md:text-[9vw]">
           {words.map((word, wordIndex) => (
             <span
               key={`${word}-${wordIndex}`}
@@ -90,9 +80,6 @@ export function Hero() {
             </span>
           ))}
         </h1>
-        <p data-hero-sub className="mt-6 max-w-md text-muted">
-          {siteCopy.hero.subtitle}
-        </p>
       </div>
 
       <div

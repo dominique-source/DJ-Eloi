@@ -1,26 +1,50 @@
 import { profile } from '@/data/profile';
-import { cleanDraft, siteCopy } from '@/data/site';
+import { cleanDraft } from '@/data/site';
 import { ConceptOrbit } from './ConceptOrbit';
 
-/** Le vrai visage derrière les concepts : bio réelle d'Éloi, projets en orbite. */
+/**
+ * Présentation de DJ King E, style site de DJ professionnel :
+ * l'orbite des projets, puis une grande quote signature et la bio.
+ * Les témoignages (profile.testimonials) s'affichent dès qu'ils existent.
+ */
 export function About() {
   return (
     <section className="px-8 py-24 md:px-16">
       <ConceptOrbit />
-      <div className="mt-10 max-w-2xl">
-        <p className="text-xs uppercase tracking-caps text-muted">
-          {siteCopy.about.label}
+
+      <blockquote className="mt-24">
+        <p className="max-w-5xl font-display text-4xl font-black italic leading-tight tracking-title md:text-7xl">
+          « {profile.tagline.replace(/\.$/, '')} »
         </p>
-        <h2 className="mt-4 font-display text-4xl font-black italic tracking-title md:text-6xl">
-          {profile.djName}
-        </h2>
-        <p className="mt-6 max-w-xl leading-relaxed text-muted">
-          {cleanDraft(profile.bio)}
-        </p>
-        <p className="mt-6 font-display text-xl font-black italic text-accent">
-          {profile.tagline}
-        </p>
-      </div>
+        <footer className="mt-8 flex items-center gap-4">
+          <span
+            aria-hidden
+            className="block h-1 w-14 origin-left rotate-(--rotate-signature) bg-accent"
+          />
+          <span className="text-xs uppercase tracking-caps text-muted">
+            {profile.djName} · {profile.realName}, {profile.age} ans
+          </span>
+        </footer>
+      </blockquote>
+
+      <p className="mt-14 max-w-xl leading-relaxed text-muted">
+        {cleanDraft(profile.bio)}
+      </p>
+
+      {profile.testimonials.length > 0 ? (
+        <div className="mt-20 grid gap-10 md:grid-cols-2">
+          {profile.testimonials.map((testimonial) => (
+            <blockquote key={testimonial.quote}>
+              <p className="font-display text-2xl font-black italic tracking-title">
+                « {testimonial.quote} »
+              </p>
+              <footer className="mt-3 text-xs uppercase tracking-caps text-muted">
+                — {testimonial.author}
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }

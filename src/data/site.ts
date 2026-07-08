@@ -1,6 +1,3 @@
-import { profile } from './profile';
-import { flagships, startups } from './startups';
-
 /**
  * Copie éditoriale du site (labels de sections, titres, formulaires).
  * Les concepts DJ restent dans startups.ts ; le profil réel d'Éloi
@@ -19,25 +16,7 @@ export function isDraft(value: string): boolean {
 
 export const siteCopy = {
   hero: {
-    kicker: `${profile.age} ans · ${startups.length} concepts · 1 vision`,
-    subtitle: `${startups.length} façons originales de faire du DJ, imaginées par un DJ de ${profile.age} ans. Bienvenue dans le futur du divertissement.`,
     scrollHint: 'Défile pour entrer',
-  },
-  manifesto: {
-    label: 'Manifesto',
-    text: `${startups.length} façons originales de faire du DJ. Pas un site vitrine — la preuve qu'à 15 ans on peut réinventer ce qu'un DJ peut être : un mix, un jeu, une communauté, un spectacle. Chaque concept est une idée vraie, prête à être vécue.`,
-  },
-  about: {
-    label: 'Le vrai visage',
-  },
-  impact: {
-    label: 'Pourquoi cette vision',
-    title: 'Des idées. Et des chiffres.',
-    stats: [
-      { value: startups.length, suffix: '', label: 'façons originales de faire du DJ' },
-      { value: flagships.length, suffix: '', label: 'concepts phares' },
-      { value: profile.age, suffix: ' ans', label: 'derrière les platines' },
-    ],
   },
   grid: {
     label: 'Les concepts',
@@ -49,11 +28,6 @@ export const siteCopy = {
     label: 'Concepts phares',
     title: 'Les paris les plus audacieux.',
     cta: 'Découvrir',
-  },
-  roadmap: {
-    label: 'Roadmap',
-    title: '24 mois pour tout changer.',
-    note: 'Les jalons des concepts phares, du battle pilote aux revenus récurrents.',
   },
   gallery: {
     label: 'Galerie',
