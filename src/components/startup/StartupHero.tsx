@@ -44,9 +44,7 @@ export function StartupHero({ startup }: { startup: Startup }) {
           transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
         };
 
-  const kicker = startup.flagship
-    ? `${categoryLabels[startup.category]} · ${siteCopy.startup.flagshipTag}`
-    : categoryLabels[startup.category];
+  const kicker = categoryLabels[startup.category];
 
   return (
     <header

@@ -1,7 +1,6 @@
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { ConsoleShowcase } from '@/components/sections/ConsoleShowcase';
-import { FlagshipStory } from '@/components/sections/FlagshipStory';
 import { Gallery } from '@/components/sections/Gallery';
 import { DJAcademy } from '@/components/sections/DJAcademy';
 import { ContactCTA } from '@/components/sections/ContactCTA';
@@ -13,7 +12,6 @@ export default function Home() {
       <Hero />
       <About />
       <ConsoleShowcase />
-      <FlagshipStory />
       <Gallery />
       <DJAcademy />
       <ContactCTA />

@@ -1,14 +1,14 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { DJEngine } from '@/lib/djAudio';
 import { siteCopy } from '@/data/site';
-import { MagneticButton } from '@/components/ui/MagneticButton';
 import { DJConsole } from './DJConsole';
+import { AcademyUnlock } from './AcademyUnlock';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
+const UNLOCK_KEY = 'dj-academy-unlocked';
 const STORAGE_KEY = 'dj-academy-scores';
 const MAX_XP = 300;
 const TAPS_REQUIRED = 8;
@@ -30,10 +30,14 @@ function phaseScore(phases: number[]): number {
   return Math.round(Math.max(0, 100 - average * 250));
 }
 
-/** Section jeu vidéo : une vraie console de DJ interactive, missions intégrées. */
+/**
+ * Section jeu vidéo : une vraie console de DJ interactive, missions
+ * intégrées. La console est visible mais assombrie/inerte tant que le
+ * formulaire (nom complet + courriel) n'a pas été rempli.
+ */
 export function DJAcademy() {
   const [engine] = useState(() => new DJEngine());
-  const [started, setStarted] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const [muted, setMuted] = useState(false);
   const [scores, setScores] = useState<number[]>([]);
   const [beat, setBeat] = useState(1);
@@ -53,15 +57,21 @@ export function DJAcademy() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) setScores(JSON.parse(saved) as number[]);
+      if (localStorage.getItem(UNLOCK_KEY) === 'true') setUnlocked(true);
     } catch {
       // stockage indisponible : progression pour la session seulement
     }
     return () => engine.dispose();
   }, [engine]);
 
-  // LED de beat 1-2-3-4, tant que la console est allumée.
+  // Le son ne démarre qu'une fois la console réellement déverrouillée.
   useEffect(() => {
-    if (!started || muted || reducedMotion) return;
+    if (unlocked) void engine.init().then(() => engine.start());
+  }, [unlocked, engine]);
+
+  // LED de beat 1-2-3-4, tant que la console tourne.
+  useEffect(() => {
+    if (!unlocked || muted || reducedMotion) return;
     let frame = 0;
     const tick = () => {
       setBeat(engine.beatCount());
@@ -69,7 +79,7 @@ export function DJAcademy() {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [started, muted, reducedMotion, engine]);
+  }, [unlocked, muted, reducedMotion, engine]);
 
   const saveScores = (next: number[]) => {
     setScores(next);
@@ -80,11 +90,18 @@ export function DJAcademy() {
     }
   };
 
-  const onStart = async () => {
-    await engine.init();
-    engine.start();
-    setStarted(true);
-    setMuted(false);
+  // Créer/reprendre l'AudioContext dans le geste utilisateur (soumission).
+  const onSubmitAttempt = () => {
+    void engine.init();
+  };
+
+  const onUnlocked = () => {
+    setUnlocked(true);
+    try {
+      localStorage.setItem(UNLOCK_KEY, 'true');
+    } catch {
+      // stockage indisponible
+    }
   };
 
   const onToggleSound = async () => {
@@ -165,51 +182,42 @@ export function DJAcademy() {
       </h2>
       <p className="mt-4 max-w-md text-muted">{siteCopy.academy.subtitle}</p>
 
-      {/* HUD */}
-      <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border border-foreground/15 px-6 py-4">
-        <p className="text-xs uppercase tracking-caps text-muted">
-          {siteCopy.academy.rankLabel} —{' '}
-          <span className="text-accent">{rankFor(xp)}</span>
-        </p>
-        <div className="flex min-w-40 flex-1 items-center gap-3">
-          <span className="text-xs uppercase tracking-caps text-muted">
-            {siteCopy.academy.xp} {xp}/{MAX_XP}
-          </span>
-          <div className="h-1 flex-1 bg-foreground/10">
-            <div
-              className="h-full origin-left bg-accent transition-transform duration-500"
-              style={{ transform: `scaleX(${xp / MAX_XP})` }}
-            />
-          </div>
-        </div>
-        {scores.map((score, index) => (
-          <span
-            key={siteCopy.academy.missions[index].title}
-            className="rounded-full border border-accent px-2 py-0.5 text-[10px] uppercase tracking-caps text-accent"
-          >
-            {siteCopy.academy.missionDone} {index + 1} · {score}%
-          </span>
-        ))}
-        {started ? (
-          <button
-            type="button"
-            onClick={onToggleSound}
-            className="text-xs uppercase tracking-caps text-muted transition-colors hover:text-accent"
-          >
-            {muted ? siteCopy.academy.soundOn : siteCopy.academy.soundOff}
-          </button>
-        ) : null}
-      </div>
-
-      {!started ? (
-        <MagneticButton
-          onClick={onStart}
-          className="mt-12 border-2 border-accent px-12 py-6 font-display text-2xl font-black italic text-accent hover:bg-accent hover:text-[#0a0a0a]"
-        >
-          {siteCopy.academy.start}
-        </MagneticButton>
-      ) : (
+      {unlocked ? (
         <>
+          {/* HUD */}
+          <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border border-foreground/15 px-6 py-4">
+            <p className="text-xs uppercase tracking-caps text-muted">
+              {siteCopy.academy.rankLabel} —{' '}
+              <span className="text-accent">{rankFor(xp)}</span>
+            </p>
+            <div className="flex min-w-40 flex-1 items-center gap-3">
+              <span className="text-xs uppercase tracking-caps text-muted">
+                {siteCopy.academy.xp} {xp}/{MAX_XP}
+              </span>
+              <div className="h-1 flex-1 bg-foreground/10">
+                <div
+                  className="h-full origin-left bg-accent transition-transform duration-500"
+                  style={{ transform: `scaleX(${xp / MAX_XP})` }}
+                />
+              </div>
+            </div>
+            {scores.map((score, index) => (
+              <span
+                key={siteCopy.academy.missions[index].title}
+                className="rounded-full border border-accent px-2 py-0.5 text-[10px] uppercase tracking-caps text-accent"
+              >
+                {siteCopy.academy.missionDone} {index + 1} · {score}%
+              </span>
+            ))}
+            <button
+              type="button"
+              onClick={onToggleSound}
+              className="text-xs uppercase tracking-caps text-muted transition-colors hover:text-accent"
+            >
+              {muted ? siteCopy.academy.soundOn : siteCopy.academy.soundOff}
+            </button>
+          </div>
+
           {/* mission en cours */}
           <div className="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2">
             {mission ? (
@@ -227,7 +235,14 @@ export function DJAcademy() {
               <p className="text-sm text-muted">{siteCopy.academy.freePlay}</p>
             )}
           </div>
+        </>
+      ) : null}
 
+      <div className="relative mt-10">
+        {!unlocked ? (
+          <AcademyUnlock onSubmitAttempt={onSubmitAttempt} onUnlocked={onUnlocked} />
+        ) : null}
+        <div className={unlocked ? '' : 'pointer-events-none opacity-30 grayscale'}>
           <DJConsole
             engine={engine}
             missionIndex={missionIndex}
@@ -238,8 +253,8 @@ export function DJAcademy() {
             onDropEnd={onDropEnd}
             dropHeld={dropHeld}
           />
-        </>
-      )}
+        </div>
+      </div>
 
       {missionIndex >= 3 ? (
         <div className="mt-12 flex flex-wrap items-center gap-8">
@@ -254,12 +269,6 @@ export function DJAcademy() {
           >
             {siteCopy.academy.replay}
           </button>
-          <Link
-            href="/startups/mixtape-academy"
-            className="text-xs uppercase tracking-caps text-accent"
-          >
-            {siteCopy.academy.conceptLink} →
-          </Link>
         </div>
       ) : null}
     </section>

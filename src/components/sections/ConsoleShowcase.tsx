@@ -187,7 +187,7 @@ export function ConsoleShowcase() {
                 href={`/startups/${startup.slug}`}
                 className="mt-8 inline-block border border-accent px-6 py-3 text-sm uppercase tracking-caps text-accent transition-[background-color,color] hover:bg-accent hover:text-[#0a0a0a]"
               >
-                {siteCopy.flagshipStory.cta}
+                {siteCopy.startup.discover}
               </Link>
             </div>
           </div>

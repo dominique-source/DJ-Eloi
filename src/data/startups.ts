@@ -32,11 +32,6 @@ export interface Stat {
   label: string;      // ex. "Potentiel viral"
 }
 
-export interface TimelineStep {
-  period: string;     // ex. "Mois 1–3"
-  milestone: string;
-}
-
 export interface Startup {
   id: number;
   slug: string;
@@ -44,7 +39,6 @@ export interface Startup {
   tagline: string;            // 5–8 mots, ton keynote
   pitch: string;               // 2–3 phrases, ton concept DJ
   category: Category;
-  flagship: boolean;          // true = concept phare (page enrichie)
   palette: {
     accent: string;           // LA couleur (une seule, règle 60/30/10)
     surface: string;          // fond sombre propre au concept
@@ -60,7 +54,6 @@ export interface Startup {
   moat: string;               // barrières à l'entrée
   firstAction: string;        // première action cette semaine
   stats: Stat[];              // 3 chiffres max pour la fiche
-  timeline?: TimelineStep[];  // flagship uniquement (plan 24 mois)
 }
 
 export const startups: Startup[] = [
@@ -72,7 +65,6 @@ export const startups: Startup[] = [
     pitch:
       "Des séances de groupe où le mix EST le programme : les BPM dictent l'intensité, les drops déclenchent les burpees, les breaks sont la récupération. HYROX rencontre le DJing — 50 personnes dirigées comme un orchestre du cardio.",
     category: 'sport',
-    flagship: false,
     palette: { accent: '#FFD500', surface: '#121003' },
     audience:
       'L’entraînement devient une fête; la musique efface la souffrance mentale du cardio.',
@@ -95,7 +87,6 @@ export const startups: Startup[] = [
     pitch:
       "La ligue compétitive de DJ pour les 12–17 ans : saisons, classements, battles en direct, la foule vote avec une app. Ce que le breakdance a fait pour entrer aux Olympiques, appliqué au DJing. Celui qui crée la ligue possède le sport.",
     category: 'game',
-    flagship: true,
     palette: { accent: '#CCFF00', surface: '#0D0D0D' },
     audience:
       'Les jeunes DJs n’ont aucune scène; les parents comprennent le format compétition; le public vit un show.',
@@ -109,12 +100,6 @@ export const startups: Startup[] = [
       { value: '100 %', label: 'vote de la foule' },
       { value: '9/10', label: 'potentiel long terme' },
     ],
-    timeline: [
-      { period: 'Mois 1–3', milestone: 'Battle pilote : 8 DJs, 100 spectateurs, tout filmé.' },
-      { period: 'Mois 4–9', milestone: 'Saison 1 régionale : 4 événements, app de vote, 50 K abonnés.' },
-      { period: 'Mois 10–15', milestone: 'Montréal + Québec + Ottawa, 1re commandite audio, finale à 500 spectateurs.' },
-      { period: 'Mois 16–24', milestone: '5 villes, format licencié, série YouTube, 250 K$ / an.' },
-    ],
   },
   {
     id: 3,
@@ -124,7 +109,6 @@ export const startups: Startup[] = [
     pitch:
       "Un parcours d'obstacles où la musique est la mécanique centrale : bouger au rythme pour ouvrir un passage, sprinter sur les drops, figer quand le son s'arrête. Ninja Warrior × Just Dance × Color Run — avec un score rythme + vitesse à la fin.",
     category: 'game',
-    flagship: true,
     palette: { accent: '#FF5A00', surface: '#120803' },
     audience:
       'Du sport que même les non-sportifs adorent, du gaming en vrai — et les familles jouent ensemble.',
@@ -138,12 +122,6 @@ export const startups: Startup[] = [
       { value: '10/10', label: 'viralité' },
       { value: '25 $', label: 'par participant' },
     ],
-    timeline: [
-      { period: 'Mois 1–4', milestone: 'Prototype testé sur 200 jeunes; kit et score standardisés.' },
-      { period: 'Mois 5–10', milestone: '10 événements payants, 2 500 participants, contenu systématique.' },
-      { period: 'Mois 11–18', milestone: 'Championnat provincial, kit de licence, 2 opérateurs licenciés.' },
-      { period: 'Mois 19–24', milestone: '10 villes, 25 000 participants, 400 K$ de revenus système.' },
-    ],
   },
   {
     id: 4,
@@ -153,7 +131,6 @@ export const startups: Startup[] = [
     pitch:
       "La marque de soirées dansantes 12–17 ans : thème néon, dress code lumineux, zones photo, défis en direct, zéro alcool, sécurité béton. Un vendredi par mois, une ville à la fois. Le lieu de sortie nocturne qui n'existait pas.",
     category: 'live',
-    flagship: true,
     palette: { accent: '#B517FF', surface: '#0C0312' },
     audience:
       'Les 12–17 ans n’ont AUCUN lieu de sortie nocturne; les parents paient pour un cadre sécuritaire.',
@@ -167,12 +144,6 @@ export const startups: Startup[] = [
       { value: '400', label: 'billets / soirée' },
       { value: '12', label: 'événements / an / ville' },
     ],
-    timeline: [
-      { period: 'Mois 1–3', milestone: 'Pilote : 200 ados, protocole de sécurité et confiance parentale béton.' },
-      { period: 'Mois 4–12', milestone: 'Mensualisation dans 2 villes, 3 000 billets, rituels de marque établis.' },
-      { period: 'Mois 13–18', milestone: '4 villes, premières commandites jeunesse, ~200 K$.' },
-      { period: 'Mois 19–24', milestone: '8 villes, playbook de franchise, 500 K$ / an.' },
-    ],
   },
   {
     id: 5,
@@ -182,7 +153,6 @@ export const startups: Startup[] = [
     pitch:
       "Des tournois sportifs nocturnes en lumière noire : ballons fluorescents, lignes lumineuses, peinture néon, DJ live. Topgolf a prouvé qu'on peut réinventer un sport avec lumière + musique + social — nous le faisons dans les gymnases qui dorment le soir.",
     category: 'sport',
-    flagship: true,
     palette: { accent: '#39FF14', surface: '#050F03' },
     audience:
       'Sport + fête + esthétique spectaculaire : chaque photo est partageable, chaque parent approuve.',
@@ -196,17 +166,8 @@ export const startups: Startup[] = [
       { value: '150', label: 'joueurs / événement' },
       { value: '0 $', label: 'd’infrastructure (gymnases existants)' },
     ],
-    timeline: [
-      { period: 'Mois 1–4', milestone: '3 pilotes (basket + dodgeball), kit UV standardisé transportable.' },
-      { period: 'Mois 5–12', milestone: 'Circuit mensuel dans 3 villes, 5 000 participants année 1.' },
-      { period: 'Mois 13–18', milestone: 'Kit de licence, commandite sportive, ~150 K$.' },
-      { period: 'Mois 19–24', milestone: '10 villes, étude d’une Glow Arena permanente, 350 K$ / an.' },
-    ],
   },
 ];
-
-/** Les concepts phares pour la section « Concepts phares » */
-export const flagships = startups.filter((s) => s.flagship);
 
 /** Libellés de catégories (conservés pour référence, plus utilisés en filtre). */
 export const categoryLabels: Record<Category, string> = {

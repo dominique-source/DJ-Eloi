@@ -22,11 +22,6 @@ export const siteCopy = {
     label: 'Les concepts',
     title: 'Des façons originales de faire du DJ.',
   },
-  flagshipStory: {
-    label: 'Concepts phares',
-    title: 'Les paris les plus audacieux.',
-    cta: 'Découvrir',
-  },
   gallery: {
     label: 'Galerie',
     title: 'Des images du futur.',
@@ -52,7 +47,14 @@ export const siteCopy = {
     title: 'Prends les commandes.',
     subtitle:
       'Une vraie console, du vrai son. Joue librement, réussis les trois missions, gagne ton rang.',
-    start: 'Press start',
+    unlock: {
+      title: 'Console verrouillée',
+      subtitle: 'Entre ton nom et ton courriel pour l’activer.',
+      name: 'Nom complet',
+      email: 'Courriel',
+      submit: 'Déverrouiller',
+      submitting: 'Déverrouillage…',
+    },
     soundOff: 'Couper le son',
     soundOn: 'Relancer le son',
     xp: 'XP',
@@ -80,7 +82,6 @@ export const siteCopy = {
     freePlay: 'Console libre — continue de jouer.',
     replay: 'Rejouer',
     finale: 'Académie complétée. Ton rang :',
-    conceptLink: 'Le concept complet — Mixtape Academy',
     console: {
       deck: 'Deck',
       play: 'Play',
@@ -102,7 +103,7 @@ export const siteCopy = {
   startup: {
     back: 'Tous les concepts',
     concept: 'Le concept',
-    flagshipTag: 'Flagship',
+    discover: 'Découvrir',
     prev: 'Concept précédent',
     next: 'Concept suivant',
   },
