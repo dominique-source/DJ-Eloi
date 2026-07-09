@@ -34,6 +34,7 @@ export interface DJProfile {
   contact: {
     email: string;
     instagram: string;
+    tiktok: string;
     phone: string | null;
   };
   services: Service[];
@@ -50,6 +51,7 @@ export const profile: DJProfile = {
   contact: {
     email: 'TODO@example.com',
     instagram: 'TODO',
+    tiktok: 'sounded',
     phone: null,
   },
   services: [

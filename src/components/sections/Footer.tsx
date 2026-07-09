@@ -49,6 +49,14 @@ export function Footer() {
         <div className="flex gap-6 text-xs text-muted">
           {showEmail ? <span>{profile.contact.email}</span> : null}
           {showInstagram ? <span>@{profile.contact.instagram}</span> : null}
+          <a
+            href={`https://www.tiktok.com/@${profile.contact.tiktok}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-accent"
+          >
+            @{profile.contact.tiktok}
+          </a>
         </div>
       </div>
     </footer>

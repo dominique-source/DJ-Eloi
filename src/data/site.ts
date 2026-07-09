@@ -22,9 +22,11 @@ export const siteCopy = {
     label: 'Les concepts',
     title: 'Des façons originales de faire du DJ.',
   },
-  gallery: {
-    label: 'Galerie',
-    title: 'Des images du futur.',
+  tiktok: {
+    label: 'Mixes',
+    title: 'Tous les mixes, sur TikTok.',
+    subtitle: 'Chaque set, chaque drop, chaque soirée — suis Sound ED pour ne rien manquer.',
+    cta: 'Voir sur TikTok',
   },
   contact: {
     label: 'Contact',
