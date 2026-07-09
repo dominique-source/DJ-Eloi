@@ -51,7 +51,7 @@ export const profile: DJProfile = {
   contact: {
     email: 'TODO@example.com',
     instagram: 'TODO',
-    tiktok: 'sounded',
+    tiktok: 'ed_sound_quebec',
     phone: null,
   },
   services: [

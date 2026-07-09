@@ -25,7 +25,7 @@ export function AcademyUnlock({ onSubmitAttempt, onUnlocked }: AcademyUnlockProp
   }, [state.ok, onUnlocked]);
 
   return (
-    <div className="absolute inset-0 z-20 flex items-center justify-center bg-background/80 px-6 backdrop-blur-sm">
+    <div className="absolute inset-0 z-20 flex items-center justify-center bg-background/35 px-6">
       <form
         action={formAction}
         onSubmit={onSubmitAttempt}

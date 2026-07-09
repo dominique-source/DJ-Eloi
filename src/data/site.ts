@@ -96,6 +96,23 @@ export const siteCopy = {
       crossfader: 'Crossfader',
     },
   },
+  mixRequest: {
+    label: 'Demande spéciale',
+    title: 'Défie DJ King E.',
+    subtitle:
+      'Deux chansons à fusionner, ou un défi de mix : dis-lui ce que tu veux entendre.',
+    modeMix: 'Demande de mix',
+    modeDefi: 'Défi de mix',
+    fields: {
+      name: 'Ton nom',
+      email: 'Ton courriel',
+      song1: 'Chanson 1',
+      song2: 'Chanson 2',
+      challenge: 'Ton défi',
+    },
+    submit: 'Envoyer la demande',
+    sending: 'Envoi…',
+  },
   footer: {
     index: 'Les façons de faire du DJ',
     time: 'Heure locale',

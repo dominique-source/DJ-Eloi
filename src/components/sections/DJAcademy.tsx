@@ -242,7 +242,7 @@ export function DJAcademy() {
         {!unlocked ? (
           <AcademyUnlock onSubmitAttempt={onSubmitAttempt} onUnlocked={onUnlocked} />
         ) : null}
-        <div className={unlocked ? '' : 'pointer-events-none opacity-30 grayscale'}>
+        <div className={unlocked ? '' : 'pointer-events-none opacity-70 grayscale-[55%]'}>
           <DJConsole
             engine={engine}
             missionIndex={missionIndex}
