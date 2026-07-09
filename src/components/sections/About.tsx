@@ -1,5 +1,6 @@
 import { profile } from '@/data/profile';
 import { cleanDraft } from '@/data/site';
+import { SignatureFader } from '@/components/ui/SignatureFader';
 import { ConceptOrbit } from './ConceptOrbit';
 
 /**
@@ -17,10 +18,7 @@ export function About() {
           « {profile.tagline.replace(/\.$/, '')} »
         </p>
         <footer className="mt-8 flex items-center gap-4">
-          <span
-            aria-hidden
-            className="block h-1 w-14 origin-left rotate-(--rotate-signature) bg-accent"
-          />
+          <SignatureFader className="w-14" />
           <span className="text-xs uppercase tracking-caps text-muted">
             {profile.djName} · {profile.realName}, {profile.age} ans
           </span>

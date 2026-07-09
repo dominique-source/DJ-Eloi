@@ -103,6 +103,20 @@ body {
   }
 }
 
+/* --- Élément signature : fader de console DJ qui glisse sur sa piste --- */
+.signature-fader-slide {
+  animation: signature-fader-slide 3.2s ease-in-out infinite;
+}
+
+@keyframes signature-fader-slide {
+  0%, 100% {
+    transform: translate(0, -50%);
+  }
+  50% {
+    transform: translate(calc(100cqw - 100%), -50%);
+  }
+}
+
 /* --- WOW n°1 : flash de la barre signature (barre espace) --- */
 .signature-flash {
   transform: rotate(var(--rotate-signature)) scaleX(0);
@@ -151,5 +165,8 @@ body {
   .signature-flash {
     animation: none;
     opacity: 0;
+  }
+  .signature-fader-slide {
+    animation: none;
   }
 }

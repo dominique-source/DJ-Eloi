@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { MediaSlot } from '@/components/media/MediaSlot';
+import { SignatureFader } from '@/components/ui/SignatureFader';
 import { profile } from '@/data/profile';
 import { siteCopy } from '@/data/site';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
@@ -82,10 +83,10 @@ export function Hero() {
         </h1>
       </div>
 
-      <div
+      <SignatureFader
         data-hero-bar
-        aria-hidden
-        className="absolute bottom-10 left-8 right-8 z-20 h-1.5 origin-left rotate-(--rotate-signature) bg-accent md:left-16 md:right-16"
+        autoSlide={false}
+        className="absolute bottom-10 left-8 right-8 z-20 md:left-16 md:right-16"
       />
       <p className="absolute bottom-3 left-8 z-20 text-[10px] uppercase tracking-caps text-muted md:left-16">
         {siteCopy.hero.scrollHint}

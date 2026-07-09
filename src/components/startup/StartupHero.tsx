@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { MediaSlot, type MediaType } from '@/components/media/MediaSlot';
+import { SignatureFader } from '@/components/ui/SignatureFader';
 import { categoryLabels, type Category, type Startup } from '@/data/startups';
 import { siteCopy } from '@/data/site';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
@@ -90,10 +91,7 @@ export function StartupHero({ startup }: { startup: Startup }) {
         />
       </motion.div>
 
-      <span
-        aria-hidden
-        className="block h-1.5 w-32 origin-left rotate-(--rotate-signature) bg-accent"
-      />
+      <SignatureFader className="w-32" />
     </header>
   );
 }
