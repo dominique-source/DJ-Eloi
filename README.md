@@ -27,6 +27,10 @@ pour changer un texte :
   qu'ils ne sont pas remplis.
 - **`src/data/site.ts`** — la copie éditoriale (titres de sections, labels,
   formulaire).
+- **`src/data/mixes.ts`** — les 5 derniers mixes TikTok affichés en signets
+  (section TikTok). Remplacer `url: 'TODO'` par le vrai lien de la vidéo
+  (`https://www.tiktok.com/@.../video/...`) et `caption` par son titre ;
+  tant que `url` reste `TODO`, le signet renvoie vers le profil TikTok.
 
 ## Convention des médias
 
@@ -41,6 +45,10 @@ public/media/beat-battle-league/
   mockup-desktop.png
   portrait.jpg        (profil uniquement : public/media/dj-king-e/)
 ```
+
+Les 5 signets TikTok suivent la même convention sous des slugs dédiés :
+`public/media/mix-1/gallery-01.jpg` … `public/media/mix-5/gallery-01.jpg`
+(miniature du mix, idéalement une capture verticale 9:16).
 
 Tant qu'un fichier n'existe pas, `<MediaSlot />` affiche automatiquement un
 placeholder premium (surface du concept, bruit subtil, monogramme). Aucun

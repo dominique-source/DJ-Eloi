@@ -27,6 +27,7 @@ export const siteCopy = {
     title: 'Tous les mixes, sur TikTok.',
     subtitle: 'Chaque set, chaque drop, chaque soirée — suis Sound ED pour ne rien manquer.',
     cta: 'Voir sur TikTok',
+    scrollHint: 'Défile pour parcourir',
   },
   contact: {
     label: 'Contact',
